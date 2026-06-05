@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lección 1: Los Ricos no Trabajan por una Nómina | Capital Invisible</title>
+  <title>Lección 1: La Trampa de la Nómina | Capital Invisible</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -16,17 +16,25 @@
     
     .lesson-card {
       width: 100%;
-      background: var(--bg-card);
+      background: rgba(8, 8, 8, 0.65);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       border: 1px solid var(--gold-border);
       border-radius: 16px;
-      padding: 2.5rem 2.0rem;
+      padding: 3rem 2.2rem;
       box-shadow: 
         0 25px 50px -12px rgba(0, 0, 0, 0.5),
         0 0 40px rgba(191, 149, 63, 0.03),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
       margin-bottom: var(--spacing-lg);
+      transition: var(--transition-smooth);
+    }
+
+    .lesson-card:hover {
+      border-color: rgba(191, 149, 63, 0.3);
+      box-shadow: 
+        0 30px 60px -10px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(191, 149, 63, 0.06);
     }
 
     .lesson-card h2 {
@@ -42,10 +50,15 @@
 
     .lesson-card p, .lesson-card li {
       font-size: 0.95rem;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--text-muted);
       text-align: left;
       margin-bottom: var(--spacing-sm);
+    }
+
+    .lesson-card strong {
+      color: var(--white);
+      font-weight: 500;
     }
 
     .lesson-card ul {
@@ -120,41 +133,59 @@
     <!-- Main Lesson Content (Glassmorphic Container) -->
     <main class="lesson-content">
       <div class="lesson-card">
-        <h1 class="gold-text-gradient" style="font-size: 2.2rem; text-align: left; margin-bottom: var(--spacing-md); line-height: 1.2;">
-          EL CAPITAL INVISIBLE:<br>LECCIÓN 1
+        <h1 class="gold-text-gradient" style="font-size: 2.2rem; text-align: left; margin-bottom: var(--spacing-md); line-height: 1.2; font-family: var(--font-serif);">
+          LECCIÓN 1:<br>La Trampa de la Nómina
         </h1>
         
+        <!-- Mockup del Libro Físico -->
+        <img src="mockup-libro.png" alt="Mockup El Capital Invisible" style="width: 100%; max-width: 300px; margin: 2rem auto 2.5rem auto; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.85)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+
         <p>
-          La mayoría de las personas juegan un juego financiero cuyas reglas fueron escritas para que pierdan. El intercambio directo de tiempo por dinero (el salario tradicional) es la forma de rendimiento financiero más gravada e ineficiente que existe.
+          Imagina que te invitan a jugar al ajedrez. Te sientas, colocas las piezas y empiezas a mover, sin haber leído jamás las reglas. Cada vez que tu caballo avanza, te dicen que eso no se puede. Cada vez que avanzas un peón, te cobran una comisión. Y al final del juego, cuando preguntas por qué perdiste, te dicen: <em>«Deberías haber estudiado más»</em>.
+        </p>
+        <p>
+          Eso es, en esencia, lo que les ocurre a la mayoría de las personas con el dinero.
         </p>
 
-        <h2>1. La ilusión de la nómina</h2>
+        <h2>El Juego de los Ingresos</h2>
         <p>
-          Cuando trabajas por una nómina, estás participando en la base del sistema impositivo estatal. El Estado grava tu trabajo antes de que ese dinero llegue a tu cuenta. Y una vez que llega, la inflación (generada por la emisión descontrolada del Banco de Pagos Internacionales y la banca central) devalúa tu poder adquisitivo cada segundo.
+          Desde el primer sueldo que cobramos, entramos en lo que llamamos el <strong>Juego de los Ingresos</strong>. Su mecánica es sencilla y brutal a la vez: trabajas, el empleador te paga, el Estado se queda con su parte antes de que el dinero llegue a tu cuenta, y tú gastas lo que queda. Si quieres más, trabajas más.
+        </p>
+        <p>
+          El problema no es que este juego sea trampa; el problema es que tiene un techo estructural y matemático. En el Juego de los Ingresos, cada euro de esfuerzo adicional es gravado de inmediato. Te quitan entre el 20% y el 47% en IRPF antes de que toque tus manos, sumando luego el 21% de IVA al consumirlo. El trabajador es la vaca lechera del Estado.
         </p>
 
-        <h2>2. Cómo opera el 1%</h2>
+        <h2>Por qué nunca te contaron esto</h2>
         <p>
-          Las dinastías financieras y los megagestores no acumulan salarios. Acumulan activos. Los activos corporativos, las participaciones de capital privado y los bienes inmuebles se aprecian con el tiempo y actúan como escudos naturales contra la devaluación del dinero fiduciario.
+          El sistema educativo no fue diseñado para crear ricos. Fue diseñado para crear empleados obedientes, contribuyentes fiscales disciplinados y consumidores predecibles. Te enseñan la tabla periódica y batallas medievales, pero nunca a leer el balance de un banco privado o a estructurar un patrimonio de forma fiscalmente eficiente. El sistema no tiene incentivos para enseñarte a ser propietario, porque perdería su base impositiva más leal y predecible.
         </p>
 
-        <h2>3. El ciclo de la riqueza soberana</h2>
+        <h2>El Juego de la Riqueza</h2>
         <p>
-          Para salir del tablero de juego tradicional, el Arquitecto aplica una regla de tres pasos conocida como el ciclo de la soberanía patrimonial:
+          Los grandes patrimonios juegan a un juego radicalmente distinto. Su unidad de medida no es el ingreso mensual, sino el patrimonio acumulado. Y su regla de oro es una verdad fiscal universal: <strong>la renta que no se realiza es renta que no se grava</strong>. Si posees activos que se aprecian y nunca los vendes, nunca pagas impuestos por esa ganancia de capital.
+        </p>
+        <p>
+          Este juego se rige por tres movimientos maestros:
         </p>
         <ul>
-          <li><strong>Comprar:</strong> Adquirir activos de alta calidad que generen valor y se aprecien con la inflación.</li>
-          <li><strong>Pedir prestado:</strong> Utilizar esos activos como colateral para obtener préstamos bancarios líquidos. La deuda no se grava con impuestos, lo que permite generar liquidez libre de cargas fiscales.</li>
-          <li><strong>Morir:</strong> Transferir los activos mediante estructuras corporativas, holdings y fideicomisos offshore, garantizando que el legado pase a la siguiente generación libre de confiscación estatal.</li>
+          <li><strong>Comprar:</strong> Adquirir activos reales (acciones globales, bienes raíces) que se aprecian con el tiempo y actúan como escudo contra la devaluación monetaria.</li>
+          <li><strong>Pedir prestado:</strong> Utilizar esos activos como colateral para solicitar líneas de crédito. La deuda obtenida no tributa, proporcionando liquidez neta libre de impuestos para tus gastos.</li>
+          <li><strong>Morir:</strong> Planificar la transmisión hereditaria a través de holdings o fideicomisos. Al fallecer, los activos se transmiten con su base fiscal actualizada al valor de mercado, disolviendo de forma completamente legal las plusvalías acumuladas de toda una vida.</li>
         </ul>
+        <p>
+          Mientras el trabajador de cada generación vende su tiempo y paga su tajada fresca cada mes, el propietario se mantiene pasivo, permitiendo que sus activos trabajen por él y transmitiendo la riqueza intacta de generación en generación.
+        </p>
+        <p>
+          La ignorancia es la verdadera esclavitud. El conocimiento es la verdadera libertad. Ahora que conoces las reglas del tablero, tienes dos opciones: seguir corriendo en la cinta de la nómina o aprender a jugar al juego correcto.
+        </p>
 
         <!-- Llamada a la acción (CTA) -->
         <div class="cta-box">
           <div class="cta-text">
             ¿Quieres dominar el resto de los protocolos? Obtén el manual completo aquí
           </div>
-          <a href="https://payhip.com/b/uJHeR" target="_blank" rel="noopener noreferrer" class="btn-gold-minimal" style="width: auto; padding: 0.9rem 2rem;">
-            ACCEDER AL MANUAL COMPLETO
+          <a href="https://payhip.com/b/uJHeR" target="_blank" rel="noopener noreferrer" class="btn-gold-shimmer" style="width: auto; padding: 1.1rem 2.5rem; text-decoration: none;">
+            ACCEDER AL SISTEMA COMPLETO
           </a>
         </div>
       </div>
