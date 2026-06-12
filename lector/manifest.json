@@ -1,0 +1,21 @@
+{
+  "short_name": "Lector Invisible",
+  "name": "El Capital Invisible - Lector Inteligente",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#060608",
+  "display": "standalone",
+  "theme_color": "#060608",
+  "orientation": "portrait"
+}
