@@ -1,4 +1,4 @@
-const CACHE_NAME = 'capital-invisible-reader-v1';
+const CACHE_NAME = 'capital-invisible-reader-v2';
 const ASSETS = [
   './app.html',
   './styles.css',

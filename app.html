@@ -130,6 +130,9 @@
                                 <button class="btn-dashboard btn-secondary-dash hidden" id="btn-resume-reading">
                                     Continuar Lectura
                                 </button>
+                                <button class="btn-dashboard btn-secondary-dash hidden" id="btn-install-pwa">
+                                    📥 Descargar App
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -267,7 +270,90 @@
   }
 
   checkAccess();
+
+  // PWA Install Prompt Logic
+  let deferredPrompt;
+  const btnInstallPwa = document.getElementById('btn-install-pwa');
+  const iosModal = document.getElementById('ios-install-modal');
+  const iosCloseBtn = document.getElementById('ios-modal-close-btn');
+
+  function isStandalone() {
+    return window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+  }
+
+  function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+
+  function initInstallButton() {
+    if (isStandalone()) {
+      return;
+    }
+
+    if (isIOS()) {
+      btnInstallPwa.classList.remove('hidden');
+      
+      btnInstallPwa.addEventListener('click', () => {
+        iosModal.style.display = 'flex';
+        setTimeout(() => iosModal.classList.add('open'), 10);
+      });
+      
+      iosCloseBtn.addEventListener('click', () => {
+        iosModal.classList.remove('open');
+        setTimeout(() => iosModal.style.display = 'none', 300);
+      });
+      
+      iosModal.addEventListener('click', (e) => {
+        if (e.target === iosModal) {
+          iosModal.classList.remove('open');
+          setTimeout(() => iosModal.style.display = 'none', 300);
+        }
+      });
+      return;
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      btnInstallPwa.classList.remove('hidden');
+
+      btnInstallPwa.addEventListener('click', () => {
+        btnInstallPwa.classList.add('hidden');
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted install prompt');
+          } else {
+            console.log('User dismissed install prompt');
+            btnInstallPwa.classList.remove('hidden');
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
+
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('PWA was installed');
+      btnInstallPwa.classList.add('hidden');
+    });
+  }
+
+  initInstallButton();
 </script>
+
+<!-- iOS Install Modal Overlay -->
+<div id="ios-install-modal" class="ios-modal-overlay">
+    <div class="ios-modal-container">
+        <button class="ios-modal-close" id="ios-modal-close-btn">&times;</button>
+        <div class="ios-modal-title">Cómo Descargar la App en tu iPhone/iPad</div>
+        <p class="ios-modal-text">Para instalar esta aplicación en tu dispositivo de forma nativa:</p>
+        <ol class="ios-modal-steps">
+            <li>Pulsa el botón de <b>Compartir</b> <span style="font-size: 1.25rem;">📤</span> (en la barra inferior de Safari).</li>
+            <li>Selecciona la opción <b>'Añadir a la pantalla de inicio'</b> <span style="font-size: 1.25rem;">➕</span> en el menú.</li>
+            <li>¡Listo! Aparecerá en tu pantalla de inicio como una aplicación más.</li>
+        </ol>
+    </div>
+</div>
 </body>
 
 </html>
