@@ -1,7 +1,6 @@
 const CACHE_NAME = 'capital-invisible-reader-v1';
 const ASSETS = [
-  './',
-  './index.html',
+  './app.html',
   './styles.css',
   './app.js',
   './cover.png',
