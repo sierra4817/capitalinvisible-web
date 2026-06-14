@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lector Inteligente - El Capital Invisible</title>
+    <title>Lector Inteligente - Comprar, Pedir Prestado, Morir</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-\n    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body class="dark-theme">
     <!-- Background glows -->
@@ -25,7 +25,7 @@
             <div class="sidebar-header">
                 <div class="logo-area">
                     <span class="logo-icon">✨</span>
-                    <h2>El Capital <span class="gold-text">Invisible</span></h2>
+                    <h2>Comprar, Pedir <span class="gold-text">Prestado</span>, Morir</h2>
                 </div>
                 <button class="close-sidebar-btn" id="close-sidebar-mobile" aria-label="Cerrar menú">×</button>
             </div>
@@ -54,7 +54,7 @@
                     </button>
                 </div>
                 <div class="header-center">
-                    <h1 id="current-chapter-title">El Capital Invisible</h1>
+                    <h1 id="current-chapter-title">Comprar, Pedir Prestado, Morir</h1>
                 </div>
                 <div class="top-bar-right">
                     <div class="ebook-controls" id="ebook-controls">
@@ -78,7 +78,7 @@
                 <div class="dashboard-container">
                     <div class="dashboard-hero">
                         <div class="book-cover-wrapper">
-                            <img src="cover.png" alt="Portada El Capital Invisible" class="book-cover-img" id="dashboard-cover">
+                            <img src="cover.png" alt="Portada Comprar, Pedir Prestado, Morir" class="book-cover-img" id="dashboard-cover">
                             <div class="progress-ring-container">
                                 <svg class="progress-ring" width="120" height="120">
                                     <defs>
@@ -101,24 +101,24 @@
                         </div>
                         <div class="book-details">
                             <span class="badge">🎧 AUDIOLIBRO + EBOOK INTERACTIVO</span>
-                            <h2 class="book-title">El Capital Invisible</h2>
-                            <p class="book-subtitle">Hackea tu sistema operativo mental: La arquitectura psicológica de la riqueza real</p>
+                            <h2 class="book-title">Comprar, Pedir Prestado, Morir</h2>
+                            <p class="book-subtitle">El sistema financiero que nadie te enseñó</p>
                             <p class="book-author">Por <strong>Albert Sierra</strong></p>
                             <p class="book-description">
-                                Este libro no fue escrito para ser escuchado de fondo ni para acumular polvo digital en tu biblioteca. Fue diseñado como un manual táctico para alterar tu comportamiento financiero base. Aquí aprenderás a ver la riqueza no por tu nómina, sino por tu patrimonio real y tu capacidad de libertad.
+                                Este libro detalla el mecanismo exacto que separa a quienes acumulan riqueza de quienes trabajan toda su vida sin avanzar. Tres verbos, tres pasos. Una estrategia que los grandes patrimonios llevan décadas utilizando en silencio: Comprar, Pedir Prestado, Morir. Bienvenido al otro juego.
                             </p>
                             
                             <div class="dashboard-stats">
                                 <div class="stat-card">
-                                    <span class="stat-val" id="stat-chapters-count">21</span>
-                                    <span class="stat-lbl">Capítulos</span>
+                                    <span class="stat-val" id="stat-chapters-count">11</span>
+                                    <span class="stat-lbl">Lecciones</span>
                                 </div>
                                 <div class="stat-card">
-                                    <span class="stat-val" id="stat-progress-chapters">0 / 21</span>
-                                    <span class="stat-lbl">Leídos</span>
+                                    <span class="stat-val" id="stat-progress-chapters">0 / 11</span>
+                                    <span class="stat-lbl">Leídas</span>
                                 </div>
                                 <div class="stat-card">
-                                    <span class="stat-val">~2.5h</span>
+                                    <span class="stat-val">~1.8h</span>
                                     <span class="stat-lbl">Escucha</span>
                                 </div>
                             </div>
@@ -217,11 +217,15 @@
 
 <div id="password-screen" class="password-overlay">
     <div class="password-container">
-        <div class="password-logo">El Capital <span>Invisible</span></div>
+        <div class="password-logo">Comprar, Pedir <span>Prestado</span>, Morir</div>
         <div class="password-title">Ingresa la contraseña de acceso proporcionada tras tu compra:</div>
         <input type="password" id="lector-password" class="password-input" placeholder="Contraseña">
         <button id="password-submit-btn" class="password-btn">Acceder al Lector</button>
         <div id="password-error-msg" class="password-error">Contraseña incorrecta. Inténtalo de nuevo.</div>
+        <div class="password-divider"><span>o bien</span></div>
+        <a href="https://payhip.com/b/G7ath" target="_blank" rel="noopener noreferrer" class="password-buy-btn">
+            Adquirir Libro Completo
+        </a>
     </div>
 </div>
 <script>
@@ -355,5 +359,4 @@
     </div>
 </div>
 </body>
-
 </html>
