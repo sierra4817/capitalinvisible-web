@@ -3,12 +3,12 @@
   "name": "El Capital Invisible - Lector Inteligente",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "images/icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icon.png",
+      "src": "images/icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
