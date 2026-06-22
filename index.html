@@ -813,7 +813,7 @@
       </section>
 
       <!-- Glassmorphic Capture Card (integrated with MailerLite container styles) -->
-      <div id="mlb2-189439645777397475" class="squeeze-card ml-form-embedContainer ml-subscribe-form ml-subscribe-form-189439645777397475">
+      <div id="mlb2-42852324" class="squeeze-card ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42852324">
         <h2 class="cta-heading">Ingresa tu correo para tener acceso a el audio libro capital invisible gratis.</h2>
         
         <img src="mockup-capital.png?v=2" alt="Mockup El Capital Invisible" style="width: 100%; max-width: 320px; margin: 0 auto 1.5rem auto; display: block; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-3px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
@@ -826,7 +826,7 @@
           3. El script de JS interceptará el envío para procesar la suscripción localmente y por fetch,
              y redirigirá inmediatamente al usuario a Payhip de forma transparente.
         -->
-        <form id="squeeze-form" class="capture-form ml-block-form row-form" action="https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/subscribe" data-code="" method="post" target="_blank">
+        <form id="squeeze-form" class="capture-form ml-block-form row-form" action="https://assets.mailerlite.com/jsonp/2409609/forms/190872395390649912/subscribe" data-code="" method="post" target="_blank">
           <div class="input-wrapper">
             <input 
               aria-label="email" 
@@ -1020,20 +1020,15 @@
 
   <!-- MailerLite Integration Scripts -->
   <script>
-    function ml_webform_success_189439645777397475() {
-      ml_success_redirect();
-    }
-    function ml_webform_success_42242373() {
+    function ml_webform_success_42852324() {
       ml_success_redirect();
     }
     function ml_success_redirect() {
       try {
         var $ = ml_jQuery || jQuery;
         if ($) {
-          $('.ml-subscribe-form-189439645777397475 .row-success').show();
-          $('.ml-subscribe-form-189439645777397475 .row-form').hide();
-          $('.ml-subscribe-form-42242373 .row-success').show();
-          $('.ml-subscribe-form-42242373 .row-form').hide();
+          $('.ml-subscribe-form-42852324 .row-success').show();
+          $('.ml-subscribe-form-42852324 .row-form').hide();
         }
       } catch (err) {
         console.warn("MailerLite UI state transition failed:", err);
@@ -1045,9 +1040,9 @@
       }, 1500);
     }
   </script>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
   <script>
-    fetch("https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/takel")
+    fetch("https://assets.mailerlite.com/jsonp/2409609/forms/190872395390649912/takel")
   </script>
 </body>
 </html>
