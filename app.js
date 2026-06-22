@@ -2069,6 +2069,10 @@ function renderDashboard() {
     const progressPercentVal = totalChapters > 0 ? Math.round((completedCount / totalChapters) * 100) : 0;
     
     document.getElementById('stat-progress-chapters').textContent = `${completedCount} / ${totalChapters}`;
+    const chaptersCountEl = document.getElementById('stat-chapters-count');
+    if (chaptersCountEl) {
+        chaptersCountEl.textContent = totalChapters;
+    }
     document.getElementById('dashboard-progress-percent').textContent = `${progressPercentVal}%`;
     
     // Update SVG circular progress
