@@ -20,3 +20,7 @@ node_modules/
 dist/
 build/
 *.tmp
+
+# Archivos de audio (grandes archivos multimedia)
+audio/
+*.mp3

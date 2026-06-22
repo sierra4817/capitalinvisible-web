@@ -246,6 +246,7 @@
           const entered = passwordInput.value.trim().toUpperCase();
           if (entered === CORRECT_PASSWORD) {
               localStorage.setItem('lector_authorized', 'true');
+              localStorage.setItem('lector_password_saved', entered);
               screen.style.opacity = '0';
               setTimeout(() => {
                   screen.style.display = 'none';

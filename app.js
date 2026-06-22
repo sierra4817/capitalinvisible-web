@@ -2300,7 +2300,7 @@ function renderSidebar() {
 // ==========================================================================
 // E-READER ENGINE
 // ==========================================================================
-function loadChapter(chapterIndex) {
+async function loadChapter(chapterIndex) {
     const wasPlaying = isPlaying;
     stopPlayback();
     
@@ -2371,15 +2371,36 @@ function loadChapter(chapterIndex) {
         }
     });
     
-    // Load local audio file source
-    audioElement.src = 'audio/' + chapterAudios[chapterIndex];
-    audioElement.load();
-    audioElement.playbackRate = playbackRate;
-
+    // Load secure audio source from backend
+    const trackFilename = chapterAudios[chapterIndex];
+    audioElement.src = '';
     updateProgressBar();
-    
-    if (wasPlaying) {
-        startPlayback();
+
+    try {
+        const password = localStorage.getItem('lector_password_saved') || 'AS-CAPITAL-2026';
+        const response = await fetch(`/api/get-audio?track=${encodeURIComponent(trackFilename)}&password=${encodeURIComponent(password)}&book=capital`);
+        if (!response.ok) {
+            const errData = await response.json();
+            throw new Error(errData.error || 'Acceso no autorizado');
+        }
+        const data = await response.json();
+        
+        audioElement.src = data.url;
+        audioElement.load();
+        audioElement.playbackRate = playbackRate;
+        
+        if (wasPlaying) {
+            startPlayback();
+        }
+    } catch (err) {
+        console.error("Error loading secure audio:", err);
+        const infoEl = document.getElementById('player-track-info');
+        if (infoEl) {
+            infoEl.textContent = "Error: Acceso al audio no autorizado";
+            infoEl.style.color = "#ff6347";
+        } else {
+            alert("No se pudo cargar el audio: " + err.message);
+        }
     }
 }
 

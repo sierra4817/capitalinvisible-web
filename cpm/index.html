@@ -611,9 +611,160 @@
         body.light-mode .active-sync-paragraph {
             background: linear-gradient(90deg, rgba(161, 123, 27, 0.08) 0%, transparent 100%) !important;
         }
+
+        /* Password Protection Screen Overlay */
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #060608;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            transition: opacity 0.5s ease;
+        }
+
+        .password-container {
+            background: rgba(13, 13, 16, 0.85);
+            border: 1px solid rgba(191, 149, 63, 0.2);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .password-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .password-logo span {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .password-title {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: #a0a0ab;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .password-input:focus {
+            border-color: #bf953f;
+        }
+
+        .password-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #aa771c 100%);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.10em;
+            cursor: pointer;
+            color: #000;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .password-btn:hover {
+            box-shadow: 0 5px 15px rgba(191,149,63,0.4);
+            transform: translateY(-1px);
+        }
+
+        .password-error {
+            color: #ff4a4a;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .password-divider {
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #52525b;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .password-divider::before, .password-divider::after {
+            content: "";
+            flex-grow: 1;
+            background: rgba(255,255,255,0.05);
+            height: 1px;
+            margin: 0 1rem;
+        }
+
+        .password-buy-btn {
+            display: block;
+            width: 100%;
+            padding: 0.85rem;
+            background-color: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: #a0a0ab;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .password-buy-btn:hover {
+            border-color: #bf953f;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+    <!-- Password Protection Screen Overlay -->
+    <div id="password-screen" class="password-overlay">
+        <div class="password-container">
+            <div class="password-logo">Comprar, Pedir <span>Prestado</span>, Morir</div>
+            <div class="password-title">Ingresa la contraseña de acceso proporcionada tras tu compra:</div>
+            <input type="password" id="lector-password" class="password-input" placeholder="Contraseña">
+            <button id="password-submit-btn" class="password-btn">Acceder al Lector</button>
+            <div id="password-error-msg" class="password-error">Contraseña incorrecta. Inténtalo de nuevo.</div>
+            <div class="password-divider"><span>o bien</span></div>
+            <a href="https://payhip.com/b/G7ath" target="_blank" rel="noopener noreferrer" class="password-buy-btn">
+                Adquirir Libro Completo
+            </a>
+        </div>
+    </div>
+
     <div id="app-container">
         <div id="header">
             <div style="display:flex; align-items:center; gap:8px;">
@@ -793,6 +944,9 @@
             // Restore theme
             const savedTheme = localStorage.getItem('cpm_theme') || 'dark';
             setTheme(savedTheme);
+            
+            // Check Access password
+            checkAccess();
         }
         
         function setTheme(theme) {
@@ -881,7 +1035,7 @@
             }
         }
         
-        function openReader(sIdx, cIdx) {
+        async function openReader(sIdx, cIdx) {
             currentSecIdx = sIdx;
             currentChapIdx = cIdx;
             
@@ -923,11 +1077,30 @@
             
             readerText.innerHTML = html;
             
-            // Load Audio source
-            const audioSource = section.audio ? "Audiolibro_y_Texto/" + section.audio : "";
-            if (audioSource && !audio.src.endsWith(audioSource)) {
-                audio.src = audioSource;
-                playBtn.textContent = '▶';
+            // Load Audio source asynchronously from S3 secure endpoint
+            if (section.audio) {
+                const trackFilename = section.audio;
+                audio.src = '';
+                const password = localStorage.getItem('lector_password_saved') || '';
+                playBtn.textContent = '⏳';
+                
+                try {
+                    const response = await fetch(`/api/get-audio?track=${encodeURIComponent(trackFilename)}&password=${encodeURIComponent(password)}&book=cpm`);
+                    if (!response.ok) {
+                        const errData = await response.json();
+                        throw new Error(errData.error || 'Server error');
+                    }
+                    const data = await response.json();
+                    audio.src = data.url;
+                    audio.load();
+                    playBtn.textContent = '▶';
+                } catch (err) {
+                    console.error("Error loading secure audio:", err);
+                    playBtn.textContent = '❌';
+                    alert("No se pudo cargar el audio del curso: " + err.message);
+                }
+            } else {
+                audio.src = '';
             }
             
             prepareParagraphSync();
@@ -1179,6 +1352,43 @@
                 statusLabel.textContent = 'Zona Segura';
                 statusLabel.className = 'status-badge status-safe';
             }
+        }
+
+        const CORRECT_PASSWORD = "AS-CAPITAL-2026";
+
+        function checkAccess() {
+            const screen = document.getElementById('password-screen');
+            if (localStorage.getItem('lector_authorized') === 'true') {
+                screen.style.display = 'none';
+                return;
+            }
+
+            const submitBtn = document.getElementById('password-submit-btn');
+            const passwordInput = document.getElementById('lector-password');
+            const errorMsg = document.getElementById('password-error-msg');
+
+            function verify() {
+                const entered = passwordInput.value.trim().toUpperCase();
+                if (entered === CORRECT_PASSWORD) {
+                    localStorage.setItem('lector_authorized', 'true');
+                    localStorage.setItem('lector_password_saved', entered);
+                    screen.style.opacity = '0';
+                    setTimeout(() => {
+                        screen.style.display = 'none';
+                    }, 500);
+                } else {
+                    errorMsg.style.display = 'block';
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            }
+
+            submitBtn.addEventListener('click', verify);
+            passwordInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    verify();
+                }
+            });
         }
         
         // Service Worker registration
