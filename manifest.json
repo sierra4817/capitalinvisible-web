@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "./app.html",
+  "start_url": "./audiolibro-acceso.html",
   "background_color": "#060608",
   "display": "standalone",
   "theme_color": "#060608",

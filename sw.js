@@ -1,6 +1,6 @@
 const CACHE_NAME = 'capital-invisible-reader-v2';
 const ASSETS = [
-  './app.html',
+  './audiolibro-acceso.html',
   './styles.css',
   './app.js',
   './images/cover.png',
