@@ -1219,6 +1219,11 @@ body {
     width: 100%;
     height: 100%;
     background-color: #060608;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(191, 149, 63, 0.12) 0%, transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1229,75 +1234,155 @@ body {
 }
 
 .password-container {
-    background: rgba(13, 13, 16, 0.85);
-    border: 1px solid rgba(191, 149, 63, 0.2);
-    padding: 3rem 2rem;
+    background: rgba(13, 13, 16, 0.75);
+    border: 1px solid rgba(191, 149, 63, 0.15);
+    padding: 4rem 3rem;
     border-radius: 16px;
-    max-width: 400px;
+    max-width: 500px;
     width: 90%;
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 30px 60px -12px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(191, 149, 63, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.password-logo-img {
+    width: 90px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(191, 149, 63, 0.15));
+    margin-bottom: 1.5rem;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.password-logo-img:hover {
+    transform: translateY(-4px) scale(1.05);
+    filter: drop-shadow(0 0 30px rgba(191, 149, 63, 0.35));
 }
 
 .password-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 800;
     text-transform: uppercase;
-}
-
-.password-logo span {
-    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #aa771c 100%);
+    letter-spacing: 0.18em;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(
+        135deg,
+        #bf953f 0%,
+        #fcf6ba 30%,
+        #b38728 70%,
+        #fbf5b7 85%,
+        #aa771c 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 8px rgba(191, 149, 63, 0.15));
+    line-height: 1.15;
 }
 
 .password-title {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    color: #a0a0ab;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     font-weight: 300;
-    line-height: 1.5;
+    color: #a0a0ab;
+    letter-spacing: 0.05em;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 360px;
 }
 
 .password-input {
     width: 100%;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 320px;
+    padding: 1.1rem 1.2rem;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(191, 149, 63, 0.2);
     border-radius: 8px;
-    color: #fff;
-    font-size: 1.1rem;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
     text-align: center;
     margin-bottom: 1.5rem;
     outline: none;
-    transition: border-color 0.3s;
-
+    transition: all 0.3s ease;
 }
 
 .password-input:focus {
     border-color: #bf953f;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(191, 149, 63, 0.15);
 }
 
 .password-btn {
     width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #aa771c 100%);
+    max-width: 320px;
+    padding: 1.15rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #050505;
+    background: linear-gradient(
+        135deg,
+        #bf953f 0%,
+        #fcf6ba 30%,
+        #b38728 70%,
+        #fbf5b7 85%,
+        #aa771c 100%
+    );
+    background-size: 200% auto;
+    background-position: left center;
     border: none;
     border-radius: 8px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.10em;
+    box-shadow: 
+        0 8px 25px rgba(170, 119, 28, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    color: #000;
-    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .password-btn:hover {
-    box-shadow: 0 5px 15px rgba(191,149,63,0.4);
-    transform: translateY(-1px);
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(191, 149, 63, 0.45);
+}
+
+.password-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 15px rgba(170, 119, 28, 0.2);
+}
+
+/* Button Shimmer */
+.password-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: none;
+}
+
+.password-btn:hover::before {
+    animation: buttonShimmer 1.8s infinite ease-in-out;
 }
 
 .password-error {
