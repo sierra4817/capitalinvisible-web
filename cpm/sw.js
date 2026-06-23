@@ -1,20 +1,42 @@
-const CACHE_NAME = 'cpm-reader-v4';
+const CACHE_NAME = 'comprar-pedir-morir-reader-v3';
 const ASSETS = [
-  'index.html',
-  'book_data.js',
-  'manifest.json?v=4',
-  'icon.png?v=4',
-  'logo.png'
+  './app.html',
+  './styles.css',
+  './app.js',
+  './cover.png',
+  './icon.png',
+  './manifest.json'
 ];
 
-self.addEventListener('install', e => {
+self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS);
+    })
   );
 });
 
-self.addEventListener('fetch', e => {
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
+});
+
+self.addEventListener('fetch', (e) => {
   e.respondWith(
-    caches.match(e.request).then(response => response || fetch(e.request))
+    caches.match(e.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(e.request);
+    })
   );
 });

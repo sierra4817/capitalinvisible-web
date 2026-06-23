@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Meta Tags -->
+  <title>¡Compra Confirmada! | Capital Invisible</title>
+  <meta name="description" content="Tu acceso al manual y audiolibro de El Capital Invisible ha sido configurado con éxito. Sigue las instrucciones para ingresar.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fonts: Outfit (headings) & Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- CSS DESIGN SYSTEM (Dark Luxury) --- */
+    :root {
+      --color-bg: #060608;
+      --color-card-bg: rgba(13, 13, 16, 0.65);
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #a0a0ab;
+      --color-text-muted: #6e6e73;
+      
+      /* Luxury Gold Palette */
+      --color-gold-primary: #bf953f;
+      --color-gold-light: #fcf6ba;
+      --color-gold-dark: #aa771c;
+      --color-gold-glow: rgba(191, 149, 63, 0.4);
+      --color-gold-border: rgba(191, 149, 63, 0.15);
+      
+      /* Metallic Gold Gradient */
+      --gold-gradient: linear-gradient(
+        135deg,
+        #bf953f 0%,
+        #fcf6ba 30%,
+        #b38728 70%,
+        #fbf5b7 85%,
+        #aa771c 100%
+      );
+      
+      /* Fonts */
+      --font-headings: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* --- Base reset --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* --- Cinematic Background Glows & Pattern --- */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 50% 30%, rgba(191, 149, 63, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 85% 85%, rgba(170, 119, 28, 0.03) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 650px;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* --- Header Component --- */
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      margin-bottom: 2.5rem;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .logo {
+      font-family: var(--font-headings);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+    }
+
+    .logo span {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* --- Card Component --- */
+    .confirm-card {
+      background: var(--color-card-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid var(--color-gold-border);
+      border-radius: 20px;
+      padding: 3.5rem 2.5rem;
+      box-shadow: 
+        0 30px 60px -12px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(191, 149, 63, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      width: 100%;
+      box-sizing: border-box;
+      transition: var(--transition-smooth);
+      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .confirm-card:hover {
+      border-color: rgba(191, 149, 63, 0.35);
+      box-shadow: 
+        0 40px 70px -10px rgba(0, 0, 0, 0.9),
+        0 0 65px rgba(191, 149, 63, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    /* --- Success Badge Icon --- */
+    .success-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(191, 149, 63, 0.08);
+      border: 1.5px solid var(--color-gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem auto;
+      box-shadow: 0 0 25px rgba(191, 149, 63, 0.15);
+      animation: pulseGold 2s infinite alternate;
+    }
+
+    .success-badge svg {
+      width: 32px;
+      height: 32px;
+      fill: none;
+      stroke: var(--color-gold-primary);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .confirm-title {
+      font-family: var(--font-headings);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 40%, var(--color-gold-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .confirm-subtitle {
+      font-family: var(--font-headings);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-gold-primary);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .confirm-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    /* --- Steps List --- */
+    .steps-list {
+      text-align: left;
+      max-width: 480px;
+      margin: 0 auto 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      font-family: var(--font-headings);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #050505;
+      background: var(--gold-gradient);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
+    }
+
+    .step-content {
+      flex-grow: 1;
+    }
+
+    .step-title {
+      font-family: var(--font-headings);
+      color: var(--color-text-primary);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-desc {
+      color: var(--color-text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .step-desc strong {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    /* --- CTA Buttons --- */
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .btn-primary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 1.15rem;
+      background: var(--gold-gradient);
+      background-size: 200% auto;
+      background-position: left center;
+      border: none;
+      border-radius: 8px;
+      color: #050505;
+      font-family: var(--font-headings);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(170, 119, 28, 0.25);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+    }
+
+    .btn-primary:hover::before {
+      animation: buttonShimmer 1.5s infinite ease-in-out;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 8px 25px rgba(191, 149, 63, 0.45);
+      transform: translateY(-2px);
+      background-position: right center;
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 10px rgba(191, 149, 63, 0.25);
+    }
+
+    /* --- Footer Component --- */
+    .footer {
+      width: 100%;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      text-align: center;
+      font-size: 0.68rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .footer a:hover {
+      color: var(--color-gold-primary);
+    }
+
+    /* --- Keyframe Animations --- */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes buttonShimmer {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes pulseGold {
+      0% {
+        box-shadow: 0 0 15px rgba(191, 149, 63, 0.1);
+        border-color: rgba(191, 149, 63, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 30px rgba(191, 149, 63, 0.35);
+        border-color: rgba(191, 149, 63, 1);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .confirm-card {
+        padding: 2.5rem 1.5rem;
+      }
+      .steps-list {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    /* Extra small mobile devices (e.g. 320px screens) */
+    @media (max-width: 380px) {
+      .confirm-card {
+        padding: 2rem 1rem;
+      }
+      .confirm-title {
+        font-size: 1.6rem;
+      }
+      .confirm-subtitle {
+        font-size: 0.85rem;
+      }
+      .confirm-text {
+        font-size: 0.85rem;
+        margin-bottom: 1.75rem;
+      }
+      .steps-list {
+        gap: 1.1rem;
+        margin-bottom: 2rem;
+        padding-top: 1.5rem;
+      }
+      .step-item {
+        gap: 0.75rem;
+      }
+      .step-title {
+        font-size: 0.85rem;
+      }
+      .step-desc {
+        font-size: 0.75rem;
+      }
+      .btn-primary {
+        padding: 1rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <!-- Header Component -->
+    <header class="header">
+      <div class="logo">
+        CAPITAL <span>INVISIBLE</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="confirm-card">
+      
+      <!-- Success Badge -->
+      <div class="success-badge">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h1 class="confirm-title">¡Compra Confirmada!</h1>
+      <div class="confirm-subtitle">Tu manual y audiolibro están listos</div>
+      
+      <p class="confirm-text">
+        Gracias por adquirir <strong>El Capital Invisible</strong>. Tu pago ha sido procesado de manera segura. Para acceder a todo el material interactivo y al lector de audio de alta fidelidad, sigue estos pasos:
+      </p>
+
+      <!-- Instrucciones de acceso en orden lógico -->
+      <ul class="steps-list">
+        
+        <li class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4 class="step-title">Revisa tu correo electrónico</h4>
+            <p class="step-desc">En unos minutos recibirás un correo electrónico automático de parte de nuestro sistema (**Mailer**).</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4 class="step-title">Obtén tus credenciales personales</h4>
+            <p class="step-desc">El correo contiene tu <strong>clave de acceso personal exclusiva</strong> para desbloquear el lector interactivo.</p>
+          </div>
+        </li>
+
+        <li class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4 class="step-title">Ingresa al lector e introduce tu clave</h4>
+            <p class="step-desc">Haz clic en el botón inferior e introduce la clave del correo para comenzar a escuchar y leer de inmediato.</p>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- Botón de acción con ID único para testing -->
+      <div class="cta-group">
+        <a href="audiolibro-acceso.html" id="btn-ir-lector" class="btn-primary">
+          Ingresar al Lector Interactiva
+          <svg style="width: 16px; height: 16px; fill: none; stroke: #050505; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;" viewBox="0 0 24 24">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="footer">
+      <a href="aviso-legal.html">Aviso Legal</a> | 
+      <a href="politica-privacidad.html">Política de Privacidad</a> | 
+      <a href="mailto:contacto@capitalinvisible.online">Soporte</a>
+      <p style="margin-top: 1rem;">© 2026 Capital Invisible. Todos los derechos reservados.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

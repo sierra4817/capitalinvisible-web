@@ -1,3 +1,16 @@
+const safeStorage = {
+    getItem(key) {
+        try { return localStorage.getItem(key); } catch (e) { return this._fallback[key] || null; }
+    },
+    setItem(key, value) {
+        try { localStorage.setItem(key, value); } catch (e) { this._fallback[key] = String(value); }
+    },
+    removeItem(key) {
+        try { localStorage.removeItem(key); } catch (e) { delete this._fallback[key]; }
+    },
+    _fallback: {}
+};
+
 const bookData = [
     {
         "title": "PRÓLOGO E INTRODUCCIÓN",
@@ -1998,19 +2011,19 @@ const btnResumeReading = document.getElementById('btn-resume-reading');
 // ==========================================================================
 function loadSavedProgress() {
     try {
-        const savedCompleted = localStorage.getItem('completed_chapters');
+        const savedCompleted = safeStorage.getItem('completed_chapters');
         completedChapters = savedCompleted ? JSON.parse(savedCompleted) : [];
         
-        const savedLastChapter = localStorage.getItem('last_active_chapter');
+        const savedLastChapter = safeStorage.getItem('last_active_chapter');
         lastActiveChapter = savedLastChapter ? parseInt(savedLastChapter) : 0;
         
-        const savedFontSize = localStorage.getItem('reader_font_size');
+        const savedFontSize = safeStorage.getItem('reader_font_size');
         fontSizeLevel = savedFontSize ? parseFloat(savedFontSize) : 1.35;
         
-        const savedFontFamily = localStorage.getItem('reader_font_family');
+        const savedFontFamily = safeStorage.getItem('reader_font_family');
         fontFamily = savedFontFamily ? savedFontFamily : 'serif';
     } catch (e) {
-        console.error("Error loading progress from localStorage:", e);
+        console.error("Error loading progress from safeStorage:", e);
         completedChapters = [];
         lastActiveChapter = 0;
         fontSizeLevel = 1.35;
@@ -2031,7 +2044,7 @@ function applySavedEbookStyles() {
 function markChapterCompleted(chapterIndex) {
     if (!completedChapters.includes(chapterIndex)) {
         completedChapters.push(chapterIndex);
-        localStorage.setItem('completed_chapters', JSON.stringify(completedChapters));
+        safeStorage.setItem('completed_chapters', JSON.stringify(completedChapters));
         renderDashboard();
     }
 }
@@ -2069,10 +2082,6 @@ function renderDashboard() {
     const progressPercentVal = totalChapters > 0 ? Math.round((completedCount / totalChapters) * 100) : 0;
     
     document.getElementById('stat-progress-chapters').textContent = `${completedCount} / ${totalChapters}`;
-    const chaptersCountEl = document.getElementById('stat-chapters-count');
-    if (chaptersCountEl) {
-        chaptersCountEl.textContent = totalChapters;
-    }
     document.getElementById('dashboard-progress-percent').textContent = `${progressPercentVal}%`;
     
     // Update SVG circular progress
@@ -2148,7 +2157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // THEME & NAVIGATION
 // ==========================================================================
 function initTheme() {
-    const storedTheme = localStorage.getItem('tts_reader_theme') || 'dark';
+    const storedTheme = safeStorage.getItem('tts_reader_theme') || 'dark';
     setTheme(storedTheme);
 }
 
@@ -2166,13 +2175,13 @@ function setTheme(theme) {
         document.body.classList.add('dark-theme');
         indicator.textContent = '🌙';
     }
-    localStorage.setItem('tts_reader_theme', theme);
+    safeStorage.setItem('tts_reader_theme', theme);
 }
 
 function setupEventListeners() {
     // 3-way Theme Cycle (Dark -> Light -> Sepia -> Dark)
     themeToggle.addEventListener('click', () => {
-        const currentTheme = localStorage.getItem('tts_reader_theme') || 'dark';
+        const currentTheme = safeStorage.getItem('tts_reader_theme') || 'dark';
         let nextTheme = 'dark';
         if (currentTheme === 'dark') {
             nextTheme = 'light';
@@ -2191,13 +2200,13 @@ function setupEventListeners() {
     fontDecrease.addEventListener('click', () => {
         fontSizeLevel = Math.max(1.0, fontSizeLevel - 0.1);
         readerContainerEl.style.fontSize = fontSizeLevel + 'rem';
-        localStorage.setItem('reader_font_size', fontSizeLevel);
+        safeStorage.setItem('reader_font_size', fontSizeLevel);
     });
 
     fontIncrease.addEventListener('click', () => {
         fontSizeLevel = Math.min(2.2, fontSizeLevel + 0.1);
         readerContainerEl.style.fontSize = fontSizeLevel + 'rem';
-        localStorage.setItem('reader_font_size', fontSizeLevel);
+        safeStorage.setItem('reader_font_size', fontSizeLevel);
     });
 
     // Font family switching
@@ -2208,7 +2217,7 @@ function setupEventListeners() {
         } else {
             readerContainerEl.classList.remove('sans-serif-font');
         }
-        localStorage.setItem('reader_font_family', fontFamily);
+        safeStorage.setItem('reader_font_family', fontFamily);
     });
 
     // Dashboard Start / Resume buttons
@@ -2304,13 +2313,13 @@ function renderSidebar() {
 // ==========================================================================
 // E-READER ENGINE
 // ==========================================================================
-async function loadChapter(chapterIndex) {
+function loadChapter(chapterIndex) {
     const wasPlaying = isPlaying;
     stopPlayback();
     
     currentChapterIndex = chapterIndex;
     lastActiveChapter = chapterIndex;
-    localStorage.setItem('last_active_chapter', chapterIndex);
+    safeStorage.setItem('last_active_chapter', chapterIndex);
     
     currentSentenceIndex = -1;
     sentencesList = [];
@@ -2375,36 +2384,15 @@ async function loadChapter(chapterIndex) {
         }
     });
     
-    // Load secure audio source from backend
-    const trackFilename = chapterAudios[chapterIndex];
-    audioElement.src = '';
-    updateProgressBar();
+    // Load local audio file source
+    audioElement.src = 'audio/' + chapterAudios[chapterIndex];
+    audioElement.load();
+    audioElement.playbackRate = playbackRate;
 
-    try {
-        const password = localStorage.getItem('lector_password_saved') || 'AS-CAPITAL-2026';
-        const response = await fetch(`/api/get-audio?track=${encodeURIComponent(trackFilename)}&password=${encodeURIComponent(password)}&book=capital`);
-        if (!response.ok) {
-            const errData = await response.json();
-            throw new Error(errData.error || 'Acceso no autorizado');
-        }
-        const data = await response.json();
-        
-        audioElement.src = data.url;
-        audioElement.load();
-        audioElement.playbackRate = playbackRate;
-        
-        if (wasPlaying) {
-            startPlayback();
-        }
-    } catch (err) {
-        console.error("Error loading secure audio:", err);
-        const infoEl = document.getElementById('player-track-info');
-        if (infoEl) {
-            infoEl.textContent = "Error: Acceso al audio no autorizado";
-            infoEl.style.color = "#ff6347";
-        } else {
-            alert("No se pudo cargar el audio: " + err.message);
-        }
+    updateProgressBar();
+    
+    if (wasPlaying) {
+        startPlayback();
     }
 }
 

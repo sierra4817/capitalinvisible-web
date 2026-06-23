@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO & OpenGraph Meta Tags -->
-  <title>Comprar, Pedir Prestado, Morir | El Sistema Financiero que nadie te enseñó</title>
-  <meta name="description" content="Descubre la estrategia definitiva de planificación financiera y fiscal de los grandes patrimonios. Descarga el primer capítulo gratis.">
+  <title>El Tablero Invisible | El Rastro Real del Dinero</title>
+  <meta name="description" content="Descubre c├│mo operan el BIS y los megagestores, por qu├® el dinero fiduciario te descapitaliza y c├│mo el 1% utiliza la deuda como activo. Descarga el reporte gratuito.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Comprar, Pedir Prestado, Morir: El juego financiero del 1%">
-  <meta property="og:description" content="Descubre el sistema que permite a los grandes patrimonios diferir, minimizar y eludir impuestos legalmente.">
+  <meta property="og:title" content="El Tablero Invisible: El Rastro Real del Dinero">
+  <meta property="og:description" content="Descubre la mec├ínica oculta del sistema financiero y el m├®todo del 1%.">
   <meta property="og:type" content="website">
 
   <!-- Google Fonts: Outfit (luxury sans-serif for headings) & Inter (for UI/body) -->
@@ -126,7 +126,7 @@
       font-family: var(--font-headings);
       font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--color-text-primary);
     }
@@ -537,7 +537,7 @@
       100% { left: 150%; }
     }
 
-    /* --- Custom Styles for Soberanía Patrimonial Sales Card --- */
+    /* --- Custom Styles for Soberan├¡a Patrimonial Sales Card --- */
     .soberania-card-wrapper {
       width: 100%;
       display: flex;
@@ -765,23 +765,6 @@
     }
 
     @media (max-width: 600px) {
-      .header {
-        flex-direction: column;
-        gap: 1.25rem;
-        text-align: center;
-        margin-bottom: 2.5rem;
-        padding-bottom: 1.5rem;
-      }
-      .logo {
-        font-size: 1rem;
-      }
-      .badge-confidential {
-        font-size: 0.65rem;
-        padding: 5px 12px;
-      }
-      .squeeze-card {
-        padding: 2rem 1.25rem;
-      }
       .soberania-card {
         padding: 2.5rem 1.5rem;
       }
@@ -795,11 +778,11 @@
     <!-- Header Component -->
     <header class="header">
       <div class="logo">
-        COMPRAR. PEDIR PRESTADO. <span>MORIR</span>
+        CAPITAL <span>INVISIBLE</span>
       </div>
-      <a href="app.html" class="badge-confidential" style="text-decoration: none; border-color: var(--color-gold-border-focus); background: rgba(191, 149, 63, 0.08); transition: var(--transition-fast);" onmouseover="this.style.borderColor='var(--color-gold-primary)';" onmouseout="this.style.borderColor='var(--color-gold-border)';">
-        Entrar al Lector Inteligente ➔
-      </a>
+      <div class="badge-confidential">
+        Informe Confidencial, Ginebra Suiza
+      </div>
     </header>
 
     <!-- Main Content -->
@@ -807,16 +790,25 @@
       
       <!-- Copy Intro Area -->
       <section class="hero-copy">
-        <span class="pre-title">Descubre la mecánica oculta del sistema financiero.</span>
-        <h1 class="h1-title">Comprar, Pedir Prestado, Morir:<br><span class="gold-gradient-text">El juego financiero del 1%.</span></h1>
-        <p class="subtitle">El sistema que permite a los grandes patrimonios diferir, minimizar y eludir impuestos de forma 100% legal. No es un error del sistema, es el sistema.</p>
+        <span class="pre-title">Descubre la mec├ínica oculta del sistema financiero</span>
+        <h1 class="h1-title">El Tablero Invisible<br><span class="gold-gradient-text">El Rastro Real del Dinero</span></h1>
+        <p class="subtitle">Aprende c├│mo operan el BIS y los megagestores, por qu├® el dinero fiduciario te descapitaliza, y c├│mo el 1% utiliza la deuda como activo.</p>
       </section>
 
-      <!-- Glassmorphic Capture Card -->
+      <!-- Glassmorphic Capture Card (integrated with MailerLite container styles) -->
       <div id="mlb2-189439645777397475" class="squeeze-card ml-form-embedContainer ml-subscribe-form ml-subscribe-form-189439645777397475">
-        <h2 class="cta-heading">Ingresa tu correo para descargar el Prólogo y Lección I gratis.</h2>
-        <img src="cover.png?v=2" alt="Portada Comprar Pedir Prestado Morir" style="width: 100%; max-width: 320px; margin: 0 auto 1.5rem auto; display: block; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-3px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+        <h2 class="cta-heading">Ingresa tu correo para tener acceso a el audio libro capital invisible gratis.</h2>
         
+        <img src="mockup-capital.png" alt="Mockup El Capital Invisible" style="width: 100%; max-width: 320px; margin: 0 auto 1.5rem auto; display: block; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-3px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+
+        <!--
+          CRM INTEGRATION INSTRUCTIONS:
+          Para conectar este formulario a tu CRM (Mailchimp, ActiveCampaign, Formspree, etc.):
+          1. Pega la URL de tu proveedor en el atributo 'action="..."' de abajo.
+          2. Aseg├║rate de que el m├®todo sea 'POST' (action="https://tucrm.com/api/...").
+          3. El script de JS interceptar├í el env├¡o para procesar la suscripci├│n localmente y por fetch,
+             y redirigir├í inmediatamente al usuario a Payhip de forma transparente.
+        -->
         <form id="squeeze-form" class="capture-form ml-block-form row-form" action="https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/subscribe" data-code="" method="post" target="_blank">
           <div class="input-wrapper">
             <input 
@@ -848,44 +840,41 @@
           <svg viewBox="0 0 24 24">
             <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
           </svg>
-          Garantía de Privacidad • Enlace Seguro SSL
+          Garant├¡a de Privacidad ÔÇó Enlace Seguro SSL
         </div>
       </div>
 
-      <!-- Authority Pillars -->
+      <!-- Authority Pillars (Deepening Squeeze Opt-ins) -->
       <section class="authority-pillars">
         
         <div class="pillar-card">
           <span class="pillar-num">Pilar 01</span>
-          <h3 class="pillar-title">Comprar</h3>
-          <p class="pillar-desc">Adquiere activos productivos y globales que se revalorizan con el tiempo (acciones, inmuebles, etc.) y nunca los vendas.</p>
+          <h3 class="pillar-title">Operativa Central</h3>
+          <p class="pillar-desc">Descubre el papel real del BIS (Banco de Pagos Internacionales) en la p├®rdida sistem├ítica de poder adquisitivo de las monedas fiduciarias.</p>
         </div>
 
         <div class="pillar-card">
           <span class="pillar-num">Pilar 02</span>
-          <h3 class="pillar-title">Pedir Prestado</h3>
-          <p class="pillar-desc">Usa el colateral de tu cartera para obtener líneas de crédito (Lombard) con tipos bajos. Dinero libre de impuestos de renta.</p>
+          <h3 class="pillar-title">Megagestores</h3>
+          <p class="pillar-desc">C├│mo Vanguard, BlackRock y State Street orquestan flujos de capital masivos que dirigen los mercados financieros globales.</p>
         </div>
 
         <div class="pillar-card">
           <span class="pillar-num">Pilar 03</span>
-          <h3 class="pillar-title">Morir</h3>
-          <p class="pillar-desc">El último paso: transfiere los activos a tus herederos con una actualización fiscal de su valor de mercado, eliminando ganancias latentes.</p>
-        </div>
-
-      </section>
-
-      <!-- Upsell Card -->
+          <h3 class="pillar-title">Activos & Deuda</h3>
+          <p class="pillar-desc">El m├®todo exacto "Comprar, Pedir Prestado, Morir" que las dinast├¡as usan para generar liquidez y diferir impuestos legalmente.</p>
+        </div>      <!-- Secci├│n de Ventas: Soberan├¡a Patrimonial (Upsell Card) -->
       <section class="soberania-card-wrapper">
         <div class="soberania-card">
           
           <h2 class="soberania-title">Comprar, Pedir Prestado, Morir</h2>
-          <div class="soberania-subtitle">El sistema financiero que nadie te enseñó</div>
-          <img src="cover.png?v=2" alt="Portada Comprar Pedir Prestado Morir" style="width: 100%; max-width: 320px; margin: 0 auto 2rem auto; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.8)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+          <div class="soberania-subtitle">El sistema financiero que nadie te ense├▒├│</div>
+          <img src="cover.png" alt="Portada Comprar Pedir Prestado Morir" style="width: 100%; max-width: 320px; margin: 0 auto 2rem auto; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.8)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
           <p class="soberania-intro">
-            El sistema financiero actual penaliza el trabajo y premia la propiedad. Este manual detalla los protocolos técnicos y legales que permiten aplicar la estrategia de soberanía patrimonial para proteger y multiplicar tus activos de forma libre de impuestos.
+            El sistema financiero actual penaliza el trabajo y premia la propiedad. Este manual detalla los protocolos t├®cnicos y legales que permiten aplicar la estrategia de soberan├¡a patrimonial para proteger y multiplicar tus activos de forma libre de impuestos.
           </p>
 
+          <!-- Lista de Beneficios con SVGs Premium -->
           <ul class="soberania-list">
             
             <li class="soberania-item">
@@ -895,8 +884,8 @@
                 </svg>
               </div>
               <div>
-                <h4 class="soberania-item-title">Estructuración técnica de cartera</h4>
-                <p class="soberania-item-desc">Cómo configurar tu portafolio global en brókers de alta seguridad jurídica para optimizar los ratios de apalancamiento (LTV).</p>
+                <h4 class="soberania-item-title">Estructuraci├│n t├®cnica de cartera</h4>
+                <p class="soberania-item-desc">C├│mo configurar tu portafolio global en br├│kers de alta seguridad jur├¡dica para optimizar los ratios de apalancamiento (LTV).</p>
               </div>
             </li>
 
@@ -907,8 +896,8 @@
                 </svg>
               </div>
               <div>
-                <h4 class="soberania-item-title">Manual de elusión fiscal legal</h4>
-                <p class="soberania-item-desc">Mecanismos técnicos para diferir y minimizar impuestos de renta, sucesiones y plusvalías usando normativas vigentes.</p>
+                <h4 class="soberania-item-title">Manual de elusi├│n fiscal legal</h4>
+                <p class="soberania-item-desc">Mecanismos t├®cnicos para diferir y minimizar impuestos de renta, sucesiones y plusval├¡as usando normativas vigentes.</p>
               </div>
             </li>
 
@@ -919,8 +908,8 @@
                 </svg>
               </div>
               <div>
-                <h4 class="soberania-item-title">Protocolos de Crédito Lombard</h4>
-                <p class="soberania-item-desc">Uso táctico de la deuda productiva como motor de liquidez y crecimiento sin necesidad de liquidar posiciones.</p>
+                <h4 class="soberania-item-title">Protocolos de Cr├®dito Lombard</h4>
+                <p class="soberania-item-desc">Uso t├íctico de la deuda productiva como motor de liquidez y crecimiento sin necesidad de liquidar posiciones.</p>
               </div>
             </li>
 
@@ -932,7 +921,7 @@
               </div>
               <div>
                 <h4 class="soberania-item-title">Audiolibro completo premium</h4>
-                <p class="soberania-item-desc">Narrado por la voz autorizada de Álvaro España, con pausas naturales integradas para una escucha enfocada de estudio.</p>
+                <p class="soberania-item-desc">Audiolibro completo en edici├│n premium. Narraci├│n de alta fidelidad con pausas t├ícticas integradas, dise├▒adas espec├¡ficamente para un aprendizaje profundo y enfocado.</p>
               </div>
             </li>
 
@@ -940,29 +929,19 @@
 
           <!-- Bloque de Precio -->
           <div class="soberania-price-box">
-            <div class="soberania-price-amount">$49 USD</div>
+            <div class="soberania-price-amount">29,99 $</div>
             <div class="soberania-price-desc">Libro digital + Audiolibro completo</div>
           </div>
 
-          <!-- Botones de Acción -->
+          <!-- Botones de Acci├│n (CTAs) -->
           <div class="soberania-cta-group">
             
+            <!-- Enlace Principal (Payhip Checkout) -->
             <a href="https://payhip.com/b/G7ath" class="soberania-btn-primary" target="_blank" rel="noopener noreferrer">
               <svg style="width: 16px; height: 16px; fill: #050505; margin-right: 4px;" viewBox="0 0 24 24">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
               ACCEDER AL SISTEMA COMPLETO
-            </a>
-            
-            <a href="#squeeze-form" class="soberania-btn-secondary">
-              Descargar Prólogo Gratis
-              <svg style="width: 12px; height: 12px; fill: currentColor; margin-left: 4px;" viewBox="0 0 24 24">
-                <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>
-              </svg>
-            </a>
-
-            <a href="app.html" style="font-size: 0.8rem; color: var(--color-text-muted); text-decoration: underline; margin-top: 0.5rem; transition: var(--transition-fast); display: block;" onmouseover="this.style.color='var(--color-gold-primary)';" onmouseout="this.style.color='var(--color-text-muted)';">
-              ¿Ya eres cliente? Entrar al Lector Inteligente
             </a>
 
           </div>
@@ -976,15 +955,15 @@
     <footer class="footer">
       <div class="footer-links">
         <a href="aviso-legal.html">Aviso Legal</a>
-        <a href="politica-privacidad.html">Política de Privacidad</a>
-        <a href="politica-cookies.html">Política de Cookies</a>
+        <a href="politica-privacidad.html">Pol├¡tica de Privacidad</a>
+        <a href="politica-cookies.html">Pol├¡tica de Cookies</a>
         <a href="mailto:contacto@capitalinvisible.online">Contacto</a>
       </div>
       <p class="disclaimer">
-        Este documento e información asociada no constituyen asesoramiento de inversión, fiscal o contable. El análisis del sistema financiero se proporciona con fines informativos y educativos. Todos los derechos reservados.
+        Este documento e informaci├│n asociada no constituyen asesoramiento de inversi├│n, fiscal o contable. El an├ílisis del sistema financiero se proporciona con fines informativos y educativos. Todos los derechos reservados.
       </p>
       <p class="copyright">
-        © 2026 Comprar, Pedir Prestado, Morir. Todos los derechos reservados.
+        ┬® 2026 Capital Invisible. Todos los derechos reservados.
       </p>
     </footer>
 
@@ -1003,12 +982,14 @@
         const email = emailInput.value.trim();
         if (!email) return;
 
+        // Guardar el lead localmente para habilitar estados en otras partes de la plataforma (Ecosistema AS)
         try {
-          localStorage.setItem('comprar_subscriber', email);
+          localStorage.setItem('capital_invisible_subscriber', email);
         } catch (err) {
           console.warn("Storage not available:", err);
         }
 
+        // Animaci├│n Premium del Bot├│n de Env├¡o (MailerLite procesar├í la suscripci├│n en background)
         submitBtn.disabled = true;
         btnText.style.display = 'none';
         btnLoader.style.display = 'flex';
@@ -1021,12 +1002,31 @@
     function ml_webform_success_189439645777397475() {
       ml_success_redirect();
     }
+    function ml_webform_success_42242373() {
+      ml_success_redirect();
+    }
     function ml_success_redirect() {
+      try {
+        var $ = ml_jQuery || jQuery;
+        if ($) {
+          $('.ml-subscribe-form-189439645777397475 .row-success').show();
+          $('.ml-subscribe-form-189439645777397475 .row-form').hide();
+          $('.ml-subscribe-form-42242373 .row-success').show();
+          $('.ml-subscribe-form-42242373 .row-form').hide();
+        }
+      } catch (err) {
+        console.warn("MailerLite UI state transition failed:", err);
+      }
+      // Redirigir a Payhip con un retraso de 1500ms para evitar una condici├│n de carrera
+      // y dar tiempo a que se registre la petici├│n de red de MailerLite
       setTimeout(function() {
-        window.location.href = "app.html";
+        window.location.href = "https://capitalinvisible.online/app.html";
       }, 1500);
     }
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+  <script>
+    fetch("https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/takel")
+  </script>
 </body>
 </html>

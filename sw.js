@@ -1,10 +1,12 @@
-const CACHE_NAME = 'capital-invisible-reader-v2';
+const CACHE_NAME = 'capital-invisible-reader-v14';
 const ASSETS = [
   './audiolibro-acceso.html',
+  './app.html',
   './styles.css',
   './app.js',
-  './images/cover.png',
-  './images/icon.png',
+  './cover.png',
+  './mockup-capital.png',
+  './icon.png',
   './manifest.json'
 ];
 
@@ -12,6 +14,20 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS);
+    })
+  );
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
     })
   );
 });
