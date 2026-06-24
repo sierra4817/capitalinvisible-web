@@ -123,7 +123,7 @@
     }
 
     .header-logo-image {
-      max-width: 75px; /* Reducido de forma elegante y proporcional */
+      max-width: 75px; 
       height: auto;
       filter: brightness(1.08) contrast(1.02);
       transition: var(--transition-smooth);
@@ -433,72 +433,13 @@
       50% { left: 100%; }
       100% { left: 100%; }
     }
-
-    /* --- Responsive media queries --- */
-    @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        gap: 1.25rem;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 2rem;
-        padding-bottom: 1.5rem;
-      }
-      .header-logo-image {
-        max-width: 60px;
-      }
-      .badge-confidential {
-        font-size: 0.6rem;
-        padding: 5px 12px;
-      }
-      .landing-wrapper {
-        padding: 2rem 1.25rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .lesson-card {
-        padding: 2.5rem 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .lesson-card h1 {
-        font-size: 1.8rem;
-      }
-      .lesson-card h2 {
-        font-size: 1.2rem;
-        margin-top: 2rem;
-      }
-      .cta-box {
-        padding: 2rem 1.25rem;
-        margin-top: 2.5rem;
-      }
-      .cta-text {
-        font-size: 1.1rem;
-      }
-      .footer {
-        margin-top: 3rem;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .lesson-card {
-        padding: 2rem 1rem;
-      }
-      .cta-box {
-        padding: 1.5rem 0.75rem;
-      }
-      .btn-gold-shimmer {
-        padding: 1rem;
-        font-size: 0.85rem;
-      }
-    }
   </style>
 </head>
 <body>
 
   <div class="landing-wrapper">
     
-    <!-- Header Component -->
+    <!-- Header -->
     <header class="header">
       <div class="logo-container-wrapper">
         <img src="logo-transp.png" alt="Capital Invisible Logo" class="header-logo-image">
@@ -508,7 +449,6 @@
       </div>
     </header>
 
-    <!-- Volver a la Landing -->
     <div class="back-btn-wrapper">
       <a href="https://capitalinvisible.online/" class="btn-back">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -519,15 +459,25 @@
       </a>
     </div>
 
-    <!-- Main Lesson Content (Glassmorphic Container) -->
     <main class="lesson-content">
       <article class="lesson-card">
         <h1>
           LECCIÓN 1:<br><span class="gold-text-gradient">La Trampa de la Nómina</span>
         </h1>
         
-        <!-- Mockup del Libro 3D -->
+        <!-- Mockup -->
         <img src="mockup-capital.png" alt="Mockup Capital Invisible" style="width: 100%; max-width: 300px; margin: 2rem auto 2.5rem auto; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.85)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+
+        <!-- Reproductor de Audio -->
+        <div class="player-bar" id="lesson-player" style="margin: 2rem 0; background: rgba(191, 149, 63, 0.05); border: 1px solid var(--color-gold-border); border-radius: 12px; padding: 1.5rem;">
+            <p style="text-align: center; font-size: 0.8rem; margin-bottom: 1rem; color: var(--color-gold-primary); letter-spacing: 0.1em; text-transform: uppercase;">
+                Escuchar: Prólogo
+            </p>
+            <audio controls style="width: 100%; border-radius: 8px;">
+                <source src="https://pub-b479c6d5dd794530a6d617e092b04c86.r2.dev/capital/01_Prologo.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
 
         <p>
           Imagina que te invitan a jugar al ajedrez. Te sientas, colocas las piezas y empiezas a mover, sin haber leído jamás las reglas. Cada vez que tu caballo avanza, te dicen que eso no se puede. Cada vez que avanzas un peón, te cobran una comisión. Y al final del juego, cuando preguntas por qué perdiste, te dicen: <em>«Deberías haber estudiado más»</em>.
@@ -568,7 +518,6 @@
           La ignorancia es la verdadera esclavitud. El conocimiento es la verdadera libertad. Ahora que conoces las reglas del tablero, tienes dos opciones: seguir corriendo en la cinta de la nómina o aprender a jugar al juego correcto.
         </p>
 
-        <!-- Llamada a la acción (CTA) -->
         <div class="cta-box">
           <div class="cta-text">
             ¿Quieres dominar el resto de los protocolos? Obtén el manual completo aquí
@@ -580,7 +529,6 @@
       </article>
     </main>
 
-    <!-- Footer Component -->
     <footer class="footer">
       <div class="footer-links">
         <a href="aviso-legal.html">Aviso Legal</a>
@@ -594,6 +542,5 @@
     </footer>
 
   </div>
-
 </body>
 </html>
