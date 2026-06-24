@@ -23,33 +23,21 @@ text_light = colors.HexColor('#ffffff')
 text_muted = colors.HexColor('#a0a0ab')
 border_color = colors.HexColor('#bf953f')
 
+# Gold gradient colors for liquid gold text effect
+g1 = colors.HexColor('#BF953F') # Oro base
+g2 = colors.HexColor('#FCF6BA') # Reflejo de luz blanca/amarilla
+g3 = colors.HexColor('#B38728') # Sombra del oro
+g4 = colors.HexColor('#FBF5B7') # Brillo sutil
+g5 = colors.HexColor('#AA771C') # Oro profundo
+gold_gradient = (g1, g2, g3, g4, g5)
+
 # Custom Styles
-title_style = ParagraphStyle(
-    'TitleStyle',
-    parent=styles['Normal'],
-    fontName='Helvetica-Bold',
-    fontSize=28,
-    textColor=gold_color,
-    alignment=1, # Center
-    spaceAfter=10
-)
-
-subtitle_style = ParagraphStyle(
-    'SubtitleStyle',
-    parent=styles['Normal'],
-    fontName='Helvetica',
-    fontSize=14,
-    textColor=text_light,
-    alignment=1, # Center
-    spaceAfter=40
-)
-
 body_style = ParagraphStyle(
     'BodyStyle',
     parent=styles['Normal'],
     fontName='Helvetica',
     fontSize=11,
-    textColor=text_light,
+    textColor=colors.HexColor('#A0A0AB'), # Gris Perla (#A0A0AB)
     alignment=1, # Center
     leading=18,
     spaceAfter=35
@@ -90,12 +78,57 @@ def draw_background(canvas, doc):
     canvas.setFont("Helvetica-Bold", 8)
     canvas.drawCentredString(doc.pagesize[0] / 2.0, doc.pagesize[1] - 35, "DOCUMENTO DE ACCESO PRIVADO")
     canvas.drawCentredString(doc.pagesize[0] / 2.0, 30, "© 2026 CAPITAL INVISIBLE. TODOS LOS DERECHOS RESERVADOS.")
+    
+    # Draw Title: "CAPITAL INVISIBLE" with drop shadow and gold gradient (Serif font: Times-Bold)
+    title_text = "CAPITAL INVISIBLE"
+    title_width = canvas.stringWidth(title_text, "Times-Bold", 30)
+    title_x = doc.pagesize[0] / 2.0 - (title_width / 2.0)
+    title_y = 670
+    
+    # Title Shadow (Drop Shadow)
+    canvas.saveState()
+    canvas.setFillColor(colors.HexColor('#000000'))
+    canvas.setFont("Times-Bold", 30)
+    canvas.drawString(title_x + 1.5, title_y - 1.5, title_text)
+    canvas.restoreState()
+    
+    # Title Gradient Text
+    canvas.saveState()
+    t_title = canvas.beginText(title_x, title_y)
+    t_title.setFont("Times-Bold", 30)
+    t_title.setTextRenderMode(4)
+    t_title.textLine(title_text)
+    canvas.drawText(t_title)
+    canvas.linearGradient(title_x, title_y + 25, title_x + title_width, title_y - 5, gold_gradient, extend=True)
+    canvas.restoreState()
+    
+    # Draw Subtitle: "PROTOCOLO DE ACCESO" with drop shadow and gold gradient
+    sub_text = "PROTOCOLO DE ACCESO"
+    sub_width = canvas.stringWidth(sub_text, "Helvetica-Bold", 14)
+    sub_x = doc.pagesize[0] / 2.0 - (sub_width / 2.0)
+    sub_y = 625
+    
+    # Subtitle Shadow
+    canvas.saveState()
+    canvas.setFillColor(colors.HexColor('#000000'))
+    canvas.setFont("Helvetica-Bold", 14)
+    canvas.drawString(sub_x + 1.0, sub_y - 1.0, sub_text)
+    canvas.restoreState()
+    
+    # Subtitle Gradient Text
+    canvas.saveState()
+    t_sub = canvas.beginText(sub_x, sub_y)
+    t_sub.setFont("Helvetica-Bold", 14)
+    t_sub.setTextRenderMode(4)
+    t_sub.textLine(sub_text)
+    canvas.drawText(t_sub)
+    canvas.linearGradient(sub_x, sub_y + 12, sub_x + sub_width, sub_y - 3, gold_gradient, extend=True)
+    canvas.restoreState()
+    
     canvas.restoreState()
 
 # Add contents
-story.append(Spacer(1, 45))
-story.append(Paragraph("CAPITAL INVISIBLE", title_style))
-story.append(Paragraph("PROTOCOLO DE ACCESO", subtitle_style))
+story.append(Spacer(1, 150)) # Leaves room for Title and Subtitle drawn on canvas
 
 intro_html = (
     "Has tomado posesión del manual de ingeniería financiera diseñado para quebrar la dependencia "
@@ -130,7 +163,7 @@ note_style = ParagraphStyle(
     parent=styles['Normal'],
     fontName='Helvetica-Oblique',
     fontSize=9,
-    textColor=colors.HexColor('#8e8e93'),
+    textColor=colors.HexColor('#A0A0AB'), # Gris Perla (#A0A0AB)
     alignment=1, # Center
     leading=14
 )
