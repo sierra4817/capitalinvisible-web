@@ -140,7 +140,7 @@ story.append(Paragraph(intro_html, body_style))
 
 # Add a styled table for the credentials
 data = [
-    [Paragraph("<b>Portal Seguro:</b>", label_style), Paragraph("<font color='#ffffff'><u>https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/cpm/index.html</u></font>", value_style)],
+    [Paragraph("<b>Portal Seguro:</b>", label_style), Paragraph("<font color='#ffffff'><u>https://capitalinvisible.online/cpm/index.html</u></font>", value_style)],
     [Paragraph("<b>Clave Maestra:</b>", label_style), Paragraph("<font color='#bf953f'><b>AS-CAPITAL-2026</b></font>", value_style)]
 ]
 
