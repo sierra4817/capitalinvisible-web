@@ -88,7 +88,9 @@ body {
     background-color: var(--bg-main);
     color: var(--text-primary);
     min-height: 100vh;
-    overflow: hidden;
+    /* CAMBIO: Permitimos scroll vertical, pero bloqueamos el horizontal */
+    overflow-y: auto; 
+    overflow-x: hidden; 
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
