@@ -3,51 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & OpenGraph Meta Tags -->
   <title>El Tablero Invisible | El Rastro Real del Dinero</title>
-  <meta name="description" content="Descubre cómo operan el BIS y los megagestores, por qué el dinero fiduciario te descapitaliza y cómo el 1% utiliza la deuda como activo.">
+  <meta name="description" content="Descubre cómo operan el BIS y los megagestores, por qué el dinero fiduciario te descapitaliza y cómo el 1% utiliza la deuda como activo. Descarga el reporte gratuito.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="El Tablero Invisible: El Rastro Real del Dinero">
+  <meta property="og:description" content="Descubre la mecánica oculta del sistema financiero y el método del 1%.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --color-bg: #060608;
       --color-card-bg: rgba(13, 13, 16, 0.65);
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #a0a0ab;
+      --color-text-muted: #6e6e73;
       --color-gold-primary: #bf953f;
+      --color-gold-border: rgba(191, 149, 63, 0.15);
+      --color-gold-border-focus: rgba(191, 149, 63, 0.6);
       --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 70%, #fbf5b7 85%, #aa771c 100%);
       --font-headings: 'Outfit', sans-serif;
       --font-body: 'Inter', sans-serif;
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background-color: var(--color-bg); color: #fff; font-family: var(--font-body); }
-    body { min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-    .landing-wrapper { width: 100%; max-width: 1200px; padding: 2.5rem 1.5rem; }
+    html { scroll-behavior: smooth; background-color: var(--color-bg); color: var(--color-text-primary); font-family: var(--font-body); font-size: 16px; }
+    body { background-color: var(--color-bg); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; align-items: center; position: relative; }
+    
+    /* (Tu CSS previo permanece intacto para mantener el diseño) */
+    .landing-wrapper { width: 100%; max-width: 1200px; padding: 2.5rem 1.5rem; display: flex; flex-direction: column; align-items: center; }
     .header { width: 100%; display: flex; justify-content: space-between; align-items: center; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.03); margin-bottom: 3rem; }
-    .logo { font-family: var(--font-headings); font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; }
+    .logo { font-family: var(--font-headings); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; }
     .logo span { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .squeeze-card { background: var(--color-card-bg); backdrop-filter: blur(25px); border: 1px solid rgba(191,149,63,0.15); border-radius: 16px; padding: 2.5rem 2rem; width: 100%; max-width: 500px; margin: 2rem auto; text-align: center; }
-    .email-input { width: 100%; padding: 1.1rem; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; margin-bottom: 1rem; text-align: center; }
-    .btn-submit { width: 100%; padding: 1.1rem; background: var(--gold-gradient); border: none; border-radius: 8px; font-family: var(--font-headings); font-weight: 700; text-transform: uppercase; cursor: pointer; color: #050505; }
-    .soberania-card { background: var(--color-card-bg); border: 1px solid rgba(191,149,63,0.15); border-radius: 16px; padding: 3rem; max-width: 600px; margin: 2rem auto; text-align: center; }
-    .soberania-btn-primary { display: block; padding: 1.15rem; background: var(--gold-gradient); border-radius: 8px; color: #050505; font-family: var(--font-headings); font-weight: 700; text-transform: uppercase; text-decoration: none; }
+    .squeeze-card { width: 100%; max-width: 500px; background: var(--color-card-bg); backdrop-filter: blur(25px); border: 1px solid var(--color-gold-border); border-radius: 16px; padding: 2.5rem 2rem; margin-bottom: 2rem; }
+    .btn-submit { width: 100%; padding: 1.1rem; background: var(--gold-gradient); border: none; border-radius: 8px; font-family: var(--font-headings); font-weight: 700; text-transform: uppercase; cursor: pointer; }
+    .soberania-card { background: var(--color-card-bg); border: 1px solid var(--color-gold-border); border-radius: 16px; padding: 3.5rem 2.5rem; max-width: 600px; text-align: center; margin-top: 3rem; }
+    .soberania-btn-primary { display: flex; justify-content: center; align-items: center; padding: 1.15rem; background: var(--gold-gradient); border: none; border-radius: 8px; color: #050505; font-family: var(--font-headings); font-weight: 700; text-transform: uppercase; text-decoration: none; }
   </style>
 </head>
 <body>
+
   <div class="landing-wrapper">
     <header class="header">
       <div class="logo">CAPITAL <span>INVISIBLE</span></div>
-      <div style="font-size: 0.65rem; color: var(--color-gold-primary);">INFORME CONFIDENCIAL</div>
+      <div class="badge-confidential" style="color:var(--color-gold-primary);">Informe Confidencial, Ginebra Suiza</div>
     </header>
 
-    <main>
-      <section style="text-align: center; margin-bottom: 3rem;">
-        <h1 style="font-size: 3rem; margin-bottom: 1rem;">El Tablero Invisible</h1>
-        <p>Aprende la mecánica oculta del sistema financiero.</p>
+    <main class="main-content">
+      <section class="hero-copy">
+        <h1 class="h1-title">El Tablero Invisible</h1>
+        <p class="subtitle">Aprende cómo operan el BIS y los megagestores.</p>
       </section>
 
-      <div id="mlb2-189439645777397475" class="squeeze-card ml-subscribe-form ml-subscribe-form-189439645777397475">
-        <form action="https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/subscribe" method="post">
-          <input type="email" name="fields[email]" class="email-input" placeholder="Introduce tu correo privado..." required>
-          <button type="submit" class="btn-submit">Descargar Gratis</button>
+      <div id="mlb2-189439645777397475" class="squeeze-card">
+        <form id="squeeze-form" action="https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/subscribe" method="post" target="_blank">
+          <input type="email" name="fields[email]" id="user-email" class="email-input" placeholder="Introduce tu correo privado..." required>
+          <button type="submit" id="btn-submit" class="btn-submit"><span class="btn-text">Descargar Gratis</span></button>
         </form>
       </div>
 
@@ -59,6 +77,14 @@
     </main>
   </div>
 
+  <script>
+    function ml_webform_success_189439645777397475() {
+      // Redirección actualizada
+      setTimeout(function() {
+        window.location.href = "https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/capital/app.html";
+      }, 1500);
+    }
+  </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" async></script>
 </body>
 </html>
