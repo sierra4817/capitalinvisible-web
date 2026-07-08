@@ -1,14 +1,260 @@
 <!DOCTYPE html>
 <html lang="es">
-<body style="font-family: sans-serif; text-align: center; padding: 50px; background-color: #060608; color: white;">
-    <div style="border: 2px solid #bf953f; padding: 40px; border-radius: 10px;">
-        <h1 style="color: #bf953f;">Capital Invisible</h1>
-        <p>Gracias por tu adquisición.</p>
-        <br>
-        <a href="https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/cpm/index.html" 
-           style="background-color: #bf953f; color: black; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 5px;">
-           ACCEDER AL CONTENIDO
-        </a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Compra Confirmada | Capital Invisible</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #060608;
+      --color-card-bg: rgba(13, 13, 16, 0.65);
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #a0a0ab;
+      --color-text-muted: #6e6e73;
+      --color-gold-primary: #bf953f;
+      --color-gold-border: rgba(191, 149, 63, 0.15);
+      --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 70%, #fbf5b7 85%, #aa771c 100%);
+      --font-headings: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 50% 20%, rgba(191, 149, 63, 0.09) 0%, transparent 55%),
+        radial-gradient(circle at 85% 80%, rgba(170, 119, 28, 0.05) 0%, transparent 45%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .confirmation-card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--color-card-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid var(--color-gold-border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(191, 149, 63, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      animation: cardRise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* --- Checkmark signature element --- */
+    .check-wrapper {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 1.75rem auto;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(191, 149, 63, 0.06);
+      border: 1px solid var(--color-gold-border);
+      position: relative;
+    }
+
+    .check-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(191, 149, 63, 0.15);
+      animation: ringPulse 2.4s ease-out infinite;
+    }
+
+    .check-svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .check-svg path {
+      fill: none;
+      stroke: url(#checkGoldGrad);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 24;
+      stroke-dashoffset: 24;
+      animation: drawCheck 0.6s 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    }
+
+    .eyebrow {
+      font-family: var(--font-headings);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold-primary);
+      margin-bottom: 0.9rem;
+    }
+
+    .confirmation-title {
+      font-family: var(--font-headings);
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+    }
+
+    .gold-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .confirmation-copy {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--color-text-secondary);
+      max-width: 340px;
+      margin: 0 auto 2.25rem auto;
+    }
+
+    .btn-access {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 1.05rem;
+      background: var(--gold-gradient);
+      background-size: 200% auto;
+      background-position: left center;
+      border: none;
+      border-radius: 8px;
+      color: #050505;
+      font-family: var(--font-headings);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(170, 119, 28, 0.25);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-access:hover {
+      background-position: right center;
+      box-shadow: 0 8px 25px rgba(191, 149, 63, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-access svg {
+      width: 15px;
+      height: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-access:hover svg {
+      transform: translateX(3px);
+    }
+
+    .access-note {
+      margin-top: 1.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+    }
+
+    @keyframes cardRise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes ringPulse {
+      0% { opacity: 0.5; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.35); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confirmation-card, .check-svg path, .check-wrapper::before {
+        animation: none !important;
+      }
+      .check-svg path { stroke-dashoffset: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .confirmation-card { padding: 2.5rem 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG defs for gradient stroke, rendered invisibly -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="checkGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fcf6ba" />
+        <stop offset="50%" stop-color="#bf953f" />
+        <stop offset="100%" stop-color="#aa771c" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <main class="confirmation-card">
+    <div class="check-wrapper">
+      <svg class="check-svg" viewBox="0 0 24 24">
+        <path d="M4 12.5L9.5 18L20 6" />
+      </svg>
     </div>
+
+    <div class="eyebrow">Compra Confirmada</div>
+    <h1 class="confirmation-title">Bienvenido al <span class="gold-text">1%</span></h1>
+    <p class="confirmation-copy">
+      Tu acceso a "Comprar, Pedir Prestado, Morir" está listo. El sistema completo — libro y audiolibro — te espera del otro lado.
+    </p>
+
+    <a href="https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/cpm/index.html" class="btn-access">
+      Acceder al Contenido
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+
+    <div class="access-note">Recibirás también tu contraseña por correo</div>
+  </main>
+
 </body>
 </html>
