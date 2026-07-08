@@ -215,70 +215,7 @@
     <!-- Scripts -->
     <script src="app.js"></script>
 
-<div id="password-screen" class="password-overlay">
-    <div class="password-container">
-        <div class="password-logo">Capital <span>Invisible</span></div>
-        <div class="password-title">Ingresa la contraseña de acceso proporcionada tras tu compra:</div>
-        <input type="password" id="lector-password" class="password-input" placeholder="Contraseña">
-        <button id="password-submit-btn" class="password-btn">Acceder al Lector</button>
-        <div id="password-error-msg" class="password-error">Contraseña incorrecta. Inténtalo de nuevo.</div>
-        <div class="password-divider"><span>o bien</span></div>
-        <a href="https://payhip.com/b/G7ath" target="_blank" rel="noopener noreferrer" class="password-buy-btn">
-            Adquirir Libro Completo
-        </a>
-    </div>
-</div>
 <script>
-// Utilizar el safeStorage global si está disponible, o un fallback local si no lo está.
-  const storage = (typeof safeStorage !== 'undefined') ? safeStorage : {
-      getItem(key) {
-          try { return localStorage.getItem(key); } catch (e) { return this._fallback[key] || null; }
-      },
-      setItem(key, value) {
-          try { localStorage.setItem(key, value); } catch (e) { this._fallback[key] = String(value); }
-      },
-      removeItem(key) {
-          try { localStorage.removeItem(key); } catch (e) { delete this._fallback[key]; }
-      },
-      _fallback: {}
-  };
-
-  const CORRECT_PASSWORD = "VIP1PERCENT";
-
-  function checkAccess() {
-      const screen = document.getElementById('password-screen');
-      if (storage.getItem('lector_authorized') === 'true') {
-          screen.style.display = 'none';
-          return;
-      }
-
-      const submitBtn = document.getElementById('password-submit-btn');
-      const passwordInput = document.getElementById('lector-password');
-      const errorMsg = document.getElementById('password-error-msg');
-
-      function verify() {
-          const entered = passwordInput.value.trim().toUpperCase();
-          if (entered === CORRECT_PASSWORD) {
-              storage.setItem('lector_authorized', 'true');
-              screen.style.opacity = '0';
-              setTimeout(() => {
-                  screen.style.display = 'none';
-              }, 500);
-          } else {
-              errorMsg.style.display = 'block';
-              passwordInput.value = '';
-              passwordInput.focus();
-          }
-      }
-
-      submitBtn.addEventListener('click', verify);
-      passwordInput.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter') {
-              verify();
-          }
-      });
-  }
-
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
@@ -286,8 +223,6 @@
         .catch(err => console.error('Service Worker registration failed', err));
     });
   }
-
-  checkAccess();
 
   // PWA Install Prompt Logic
   let deferredPrompt;
@@ -377,3 +312,4 @@
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
+
