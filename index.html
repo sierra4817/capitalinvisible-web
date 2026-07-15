@@ -305,6 +305,38 @@
       opacity: 0.8;
     }
 
+    /* Checkbox RGPD */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      text-align: left;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--color-gold-primary);
+    }
+
+    .checkbox-wrapper label {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    .checkbox-wrapper label a {
+      color: var(--color-gold-primary);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    .checkbox-wrapper label a:hover {
+      text-decoration: underline;
+    }
+
     /* --- Gold Premium Button --- */
     .btn-submit {
       width: 100%;
@@ -834,6 +866,13 @@
             >
           </div>
 
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+            <label for="privacy-consent">
+              He leído y acepto la <a href="politica-privacidad.html">Política de Privacidad</a>.
+            </label>
+          </div>
+
           <input type="hidden" name="ml-submit" value="1">
           <input type="hidden" name="anticsrf" value="true">
 
@@ -1034,7 +1073,7 @@
       // Redirigir al lector del audiolibro gratuito con un retraso de 1500ms para
       // dar tiempo a que se registre la petición de red de MailerLite
       setTimeout(function() {
-        window.location.href = "https://capitalinvisible.online/app.html";
+        window.location.href = "https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/capital/app.html";
       }, 1500);
     }
   </script>
