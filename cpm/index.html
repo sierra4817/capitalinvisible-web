@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- SEO & OpenGraph Meta Tags -->
-  <title>Comprar, Pedir Prestado, Morir | El Sistema Financiero que nadie te enseñó</title>
-  <meta name="description" content="Descubre la estrategia definitiva de planificación financiera y fiscal de los grandes patrimonios. Descarga el primer capítulo gratis.">
+  <title>El Tablero Invisible | El Rastro Real del Dinero</title>
+  <meta name="description" content="Descubre cómo operan el BIS y los megagestores, por qué el dinero fiduciario te descapitaliza y cómo el 1% utiliza la deuda como activo. Descarga el reporte gratuito.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Comprar, Pedir Prestado, Morir: El juego financiero del 1%">
-  <meta property="og:description" content="Descubre el sistema que permite a los grandes patrimonios diferir, minimizar y eludir impuestos legalmente.">
+  <meta property="og:title" content="El Tablero Invisible: El Rastro Real del Dinero">
+  <meta property="og:description" content="Descubre la mecánica oculta del sistema financiero y el método del 1%.">
   <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23060608'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='700' text-anchor='middle' fill='%23bf953f'%3E%24%3C/text%3E%3C/svg%3E">
 
   <!-- Google Fonts: Outfit (luxury sans-serif for headings) & Inter (for UI/body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +28,7 @@
       --color-text-primary: #ffffff;
       --color-text-secondary: #a0a0ab;
       --color-text-muted: #6e6e73;
-      
+
       /* Luxury Gold Palette */
       --color-gold-primary: #bf953f;
       --color-gold-light: #fcf6ba;
@@ -33,7 +36,7 @@
       --color-gold-glow: rgba(191, 149, 63, 0.4);
       --color-gold-border: rgba(191, 149, 63, 0.15);
       --color-gold-border-focus: rgba(191, 149, 63, 0.6);
-      
+
       /* Metallic Gold Gradient */
       --gold-gradient: linear-gradient(
         135deg,
@@ -43,11 +46,11 @@
         #fbf5b7 85%,
         #aa771c 100%
       );
-      
+
       /* Fonts */
       --font-headings: 'Outfit', sans-serif;
       --font-body: 'Inter', sans-serif;
-      
+
       --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       --transition-fast: all 0.2s ease;
     }
@@ -87,7 +90,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: 
+      background-image:
         radial-gradient(circle at 50% 20%, rgba(191, 149, 63, 0.07) 0%, transparent 55%),
         radial-gradient(circle at 10% 75%, rgba(170, 119, 28, 0.03) 0%, transparent 40%),
         linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
@@ -126,7 +129,7 @@
       font-family: var(--font-headings);
       font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--color-text-primary);
     }
@@ -215,7 +218,7 @@
       border: 1px solid var(--color-gold-border);
       border-radius: 16px;
       padding: 2.5rem 2rem;
-      box-shadow: 
+      box-shadow:
         0 25px 50px -12px rgba(0, 0, 0, 0.5),
         0 0 40px rgba(191, 149, 63, 0.03),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -227,7 +230,7 @@
 
     .squeeze-card:hover {
       border-color: rgba(191, 149, 63, 0.35);
-      box-shadow: 
+      box-shadow:
         0 30px 60px -10px rgba(0, 0, 0, 0.7),
         0 0 50px rgba(191, 149, 63, 0.06),
         inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -300,6 +303,38 @@
     .email-input::placeholder {
       color: var(--color-text-muted);
       opacity: 0.8;
+    }
+
+    /* Checkbox RGPD */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      text-align: left;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--color-gold-primary);
+    }
+
+    .checkbox-wrapper label {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    .checkbox-wrapper label a {
+      color: var(--color-gold-primary);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    .checkbox-wrapper label a:hover {
+      text-decoration: underline;
     }
 
     /* --- Gold Premium Button --- */
@@ -554,7 +589,7 @@
       border: 1px solid var(--color-gold-border);
       border-radius: 16px;
       padding: 3.5rem 2.5rem;
-      box-shadow: 
+      box-shadow:
         0 30px 60px -12px rgba(0, 0, 0, 0.7),
         0 0 50px rgba(191, 149, 63, 0.03),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -567,7 +602,7 @@
 
     .soberania-card:hover {
       border-color: rgba(191, 149, 63, 0.35);
-      box-shadow: 
+      box-shadow:
         0 40px 70px -10px rgba(0, 0, 0, 0.9),
         0 0 65px rgba(191, 149, 63, 0.06),
         inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -739,49 +774,7 @@
       background-position: right center;
     }
 
-    .soberania-btn-secondary {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 1.1rem;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-      color: var(--color-text-primary);
-      font-family: var(--font-headings);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: var(--transition-fast);
-    }
-
-    .soberania-btn-secondary:hover {
-      border-color: var(--color-gold-primary);
-      background-color: rgba(191, 149, 63, 0.04);
-      color: var(--color-gold-primary);
-      transform: translateY(-1px);
-    }
-
     @media (max-width: 600px) {
-      .header {
-        flex-direction: column;
-        gap: 1.25rem;
-        text-align: center;
-        margin-bottom: 2.5rem;
-        padding-bottom: 1.5rem;
-      }
-      .logo {
-        font-size: 1rem;
-      }
-      .badge-confidential {
-        font-size: 0.65rem;
-        padding: 5px 12px;
-      }
-      .squeeze-card {
-        padding: 2rem 1.25rem;
-      }
       .soberania-card {
         padding: 2.5rem 1.5rem;
       }
@@ -791,52 +784,60 @@
 <body>
 
   <div class="landing-wrapper">
-    
+
     <!-- Header Component -->
     <header class="header">
       <div class="logo">
-        COMPRAR. PEDIR PRESTADO. <span>MORIR</span>
+        CAPITAL <span>INVISIBLE</span>
       </div>
-      <a href="app.html" class="badge-confidential" style="text-decoration: none; border-color: var(--color-gold-border-focus); background: rgba(191, 149, 63, 0.08); transition: var(--transition-fast);" onmouseover="this.style.borderColor='var(--color-gold-primary)';" onmouseout="this.style.borderColor='var(--color-gold-border)';">
-        Entrar al Lector Inteligente ➔
-      </a>
+      <div class="badge-confidential">
+        Informe Confidencial, Ginebra Suiza
+      </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
-      
+
       <!-- Copy Intro Area -->
       <section class="hero-copy">
-        <span class="pre-title">Descubre la mecánica oculta del sistema financiero.</span>
-        <h1 class="h1-title">Comprar, Pedir Prestado, Morir:<br><span class="gold-gradient-text">El juego financiero del 1%.</span></h1>
-        <p class="subtitle">El sistema que permite a los grandes patrimonios diferir, minimizar y eludir impuestos de forma 100% legal. No es un error del sistema, es el sistema.</p>
+        <span class="pre-title">Descubre la mecánica oculta del sistema financiero</span>
+        <h1 class="h1-title">El Tablero Invisible<br><span class="gold-gradient-text">El Rastro Real del Dinero</span></h1>
+        <p class="subtitle">Aprende cómo operan el BIS y los megagestores, por qué el dinero fiduciario te descapitaliza, y cómo el 1% utiliza la deuda como activo.</p>
       </section>
 
       <!-- Glassmorphic Capture Card -->
       <div id="mlb2-189439645777397475" class="squeeze-card ml-form-embedContainer ml-subscribe-form ml-subscribe-form-189439645777397475">
-        <h2 class="cta-heading">Ingresa tu correo para descargar el Prólogo y Lección I gratis.</h2>
-        <img src="cover.png?v=2" alt="Portada Comprar Pedir Prestado Morir" style="width: 100%; max-width: 320px; margin: 0 auto 1.5rem auto; display: block; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-3px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
-        
-        <form id="squeeze-form" class="capture-form ml-block-form row-form" action="https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/subscribe" data-code="" method="post" target="_blank">
+        <h2 class="cta-heading">Ingresa tu correo para tener acceso al audiolibro Capital Invisible gratis.</h2>
+
+        <img src="mockup-capital.png" alt="Mockup El Capital Invisible" style="width: 100%; max-width: 320px; margin: 0 auto 1.5rem auto; display: block; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-3px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+
+        <form id="squeeze-form" class="capture-form ml-block-form row-form" action="https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/subscribe" data-code="" method="post">
           <div class="input-wrapper">
-            <input 
-              aria-label="email" 
-              aria-required="true" 
-              type="email" 
-              name="fields[email]" 
-              id="user-email" 
-              class="email-input" 
-              placeholder="Introduce tu correo privado..." 
+            <input
+              aria-label="email"
+              aria-required="true"
+              type="email"
+              name="fields[email]"
+              id="user-email"
+              class="email-input"
+              placeholder="Introduce tu correo privado..."
               required
               autocomplete="email"
             >
           </div>
-          
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+            <label for="privacy-consent">
+              He leído y acepto la <a href="politica-privacidad.html">Política de Privacidad</a>.
+            </label>
+          </div>
+
           <input type="hidden" name="ml-submit" value="1">
           <input type="hidden" name="anticsrf" value="true">
-          
+
           <button type="submit" id="btn-submit" class="btn-submit">
-            <span class="btn-text">Acceso Gratis</span>
+            <span class="btn-text">Descargar Gratis</span>
             <div class="btn-loader" id="btn-loader">
               <span class="spinner"></span>
               <span>Registrando...</span>
@@ -854,40 +855,36 @@
 
       <!-- Authority Pillars -->
       <section class="authority-pillars">
-        
         <div class="pillar-card">
           <span class="pillar-num">Pilar 01</span>
-          <h3 class="pillar-title">Comprar</h3>
-          <p class="pillar-desc">Adquiere activos productivos y globales que se revalorizan con el tiempo (acciones, inmuebles, etc.) y nunca los vendas.</p>
+          <h3 class="pillar-title">Operativa Central</h3>
+          <p class="pillar-desc">Descubre el papel real del BIS (Banco de Pagos Internacionales) en la pérdida sistemática de poder adquisitivo de las monedas fiduciarias.</p>
         </div>
-
         <div class="pillar-card">
           <span class="pillar-num">Pilar 02</span>
-          <h3 class="pillar-title">Pedir Prestado</h3>
-          <p class="pillar-desc">Usa el colateral de tu cartera para obtener líneas de crédito (Lombard) con tipos bajos. Dinero libre de impuestos de renta.</p>
+          <h3 class="pillar-title">Megagestores</h3>
+          <p class="pillar-desc">Cómo Vanguard, BlackRock y State Street orquestan flujos de capital masivos que dirigen los mercados financieros globales.</p>
         </div>
-
         <div class="pillar-card">
           <span class="pillar-num">Pilar 03</span>
-          <h3 class="pillar-title">Morir</h3>
-          <p class="pillar-desc">El último paso: transfiere los activos a tus herederos con una actualización fiscal de su valor de mercado, eliminando ganancias latentes.</p>
+          <h3 class="pillar-title">Activos & Deuda</h3>
+          <p class="pillar-desc">El método exacto "Comprar, Pedir Prestado, Morir" que las dinastías usan para generar liquidez y diferir impuestos legalmente.</p>
         </div>
-
       </section>
 
-      <!-- Upsell Card -->
+      <!-- Sección de Ventas: Soberanía Patrimonial -->
       <section class="soberania-card-wrapper">
         <div class="soberania-card">
-          
+
           <h2 class="soberania-title">Comprar, Pedir Prestado, Morir</h2>
           <div class="soberania-subtitle">El sistema financiero que nadie te enseñó</div>
-          <img src="cover.png?v=2" alt="Portada Comprar Pedir Prestado Morir" style="width: 100%; max-width: 320px; margin: 0 auto 2rem auto; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.8)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+          <img src="cover.png" alt="Portada Comprar Pedir Prestado Morir" style="width: 100%; max-width: 320px; margin: 0 auto 2rem auto; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.8)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
           <p class="soberania-intro">
             El sistema financiero actual penaliza el trabajo y premia la propiedad. Este manual detalla los protocolos técnicos y legales que permiten aplicar la estrategia de soberanía patrimonial para proteger y multiplicar tus activos de forma libre de impuestos.
           </p>
 
+          <!-- Lista de Beneficios -->
           <ul class="soberania-list">
-            
             <li class="soberania-item">
               <div class="soberania-icon-wrapper">
                 <svg viewBox="0 0 24 24">
@@ -899,7 +896,6 @@
                 <p class="soberania-item-desc">Cómo configurar tu portafolio global en brókers de alta seguridad jurídica para optimizar los ratios de apalancamiento (LTV).</p>
               </div>
             </li>
-
             <li class="soberania-item">
               <div class="soberania-icon-wrapper">
                 <svg viewBox="0 0 24 24">
@@ -907,11 +903,10 @@
                 </svg>
               </div>
               <div>
-                <h4 class="soberania-item-title">Manual de elusión fiscal legal</h4>
+                <h4 class="soberania-item-title">Manual de eficiencia fiscal</h4>
                 <p class="soberania-item-desc">Mecanismos técnicos para diferir y minimizar impuestos de renta, sucesiones y plusvalías usando normativas vigentes.</p>
               </div>
             </li>
-
             <li class="soberania-item">
               <div class="soberania-icon-wrapper">
                 <svg viewBox="0 0 24 24">
@@ -923,7 +918,6 @@
                 <p class="soberania-item-desc">Uso táctico de la deuda productiva como motor de liquidez y crecimiento sin necesidad de liquidar posiciones.</p>
               </div>
             </li>
-
             <li class="soberania-item">
               <div class="soberania-icon-wrapper">
                 <svg viewBox="0 0 24 24">
@@ -932,39 +926,25 @@
               </div>
               <div>
                 <h4 class="soberania-item-title">Audiolibro completo premium</h4>
-                <p class="soberania-item-desc">Narrado por la voz autorizada de Álvaro España, con pausas naturales integradas para una escucha enfocada de estudio.</p>
+                <p class="soberania-item-desc">Audiolibro completo en edición premium. Narración de alta fidelidad con pausas tácticas integradas, diseñadas específicamente para un aprendizaje profundo y enfocado.</p>
               </div>
             </li>
-
           </ul>
 
           <!-- Bloque de Precio -->
           <div class="soberania-price-box">
-            <div class="soberania-price-amount">$11,99 USD</div>
+            <div class="soberania-price-amount">$11.99 USD</div>
             <div class="soberania-price-desc">Libro digital + Audiolibro completo</div>
           </div>
 
           <!-- Botones de Acción -->
           <div class="soberania-cta-group">
-            
             <a href="https://payhip.com/b/G7ath" class="soberania-btn-primary" target="_blank" rel="noopener noreferrer">
               <svg style="width: 16px; height: 16px; fill: #050505; margin-right: 4px;" viewBox="0 0 24 24">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
               ACCEDER AL SISTEMA COMPLETO
             </a>
-            
-            <a href="#squeeze-form" class="soberania-btn-secondary">
-              Descargar Prólogo Gratis
-              <svg style="width: 12px; height: 12px; fill: currentColor; margin-left: 4px;" viewBox="0 0 24 24">
-                <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>
-              </svg>
-            </a>
-
-            <a href="https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/cpm/index.html" style="font-size: 0.8rem; color: var(--color-text-muted); text-decoration: underline; margin-top: 0.5rem; transition: var(--transition-fast); display: block;" onmouseover="this.style.color='var(--color-gold-primary)';" onmouseout="this.style.color='var(--color-text-muted)';">
-              ¿Ya eres cliente? Entrar al Lector Inteligente
-            </a>
-
           </div>
 
         </div>
@@ -984,13 +964,13 @@
         Este documento e información asociada no constituyen asesoramiento de inversión, fiscal o contable. El análisis del sistema financiero se proporciona con fines informativos y educativos. Todos los derechos reservados.
       </p>
       <p class="copyright">
-        © 2026 Comprar, Pedir Prestado, Morir. Todos los derechos reservados.
+        © 2026 Capital Invisible. Todos los derechos reservados.
       </p>
     </footer>
 
   </div>
 
-  <!-- JavaScript for Form Submit & Local State -->
+  <!-- JavaScript for Form Submit UI State -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('squeeze-form');
@@ -1002,12 +982,6 @@
       form.addEventListener('submit', () => {
         const email = emailInput.value.trim();
         if (!email) return;
-
-        try {
-          localStorage.setItem('comprar_subscriber', email);
-        } catch (err) {
-          console.warn("Storage not available:", err);
-        }
 
         submitBtn.disabled = true;
         btnText.style.display = 'none';
@@ -1021,12 +995,29 @@
     function ml_webform_success_189439645777397475() {
       ml_success_redirect();
     }
+    function ml_webform_success_42242373() {
+      ml_success_redirect();
+    }
     function ml_success_redirect() {
+      try {
+        var $ = ml_jQuery || jQuery;
+        if ($) {
+          $('.ml-subscribe-form-189439645777397475 .row-success').show();
+          $('.ml-subscribe-form-189439645777397475 .row-form').hide();
+          $('.ml-subscribe-form-42242373 .row-success').show();
+          $('.ml-subscribe-form-42242373 .row-form').hide();
+        }
+      } catch (err) {
+        console.warn("MailerLite UI state transition failed:", err);
+      }
       setTimeout(function() {
-        window.location.href = "https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/cpm/index.html";
+        window.location.href = "https://capitalinvisible.online/app.html";
       }, 1500);
     }
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+  <script>
+    fetch("https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/takel")
+  </script>
 </body>
 </html>
