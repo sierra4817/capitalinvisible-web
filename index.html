@@ -2,907 +2,1084 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Capital Invisible | Audiolibro Gratis</title>
+  <!-- SEO & OpenGraph Meta Tags -->
+  <title>El Tablero Invisible | El Rastro Real del Dinero</title>
+  <meta name="description" content="Descubre cómo operan el BIS y los megagestores, por qué el dinero fiduciario te descapitaliza y cómo el 1% utiliza la deuda como activo. Descarga el reporte gratuito.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="El Tablero Invisible: El Rastro Real del Dinero">
+  <meta property="og:description" content="Descubre la mecánica oculta del sistema financiero y el método del 1%.">
+  <meta property="og:type" content="website">
 
-  <meta name="description" content="Descubre Capital Invisible, el audiolibro completo gratuito sobre dinero, deuda, patrimonio y el funcionamiento del sistema financiero.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23060608'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='60' font-weight='700' text-anchor='middle' fill='%23bf953f'%3E%24%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Outfit (luxury sans-serif for headings) & Inter (for UI/body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* --- CSS DESIGN SYSTEM (Dark Luxury) --- */
+    :root {
+      --color-bg: #060608;
+      --color-card-bg: rgba(13, 13, 16, 0.65);
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #a0a0ab;
+      --color-text-muted: #6e6e73;
+
+      /* Luxury Gold Palette */
+      --color-gold-primary: #bf953f;
+      --color-gold-light: #fcf6ba;
+      --color-gold-dark: #aa771c;
+      --color-gold-glow: rgba(191, 149, 63, 0.4);
+      --color-gold-border: rgba(191, 149, 63, 0.15);
+      --color-gold-border-focus: rgba(191, 149, 63, 0.6);
+
+      /* Metallic Gold Gradient */
+      --gold-gradient: linear-gradient(
+        135deg,
+        #bf953f 0%,
+        #fcf6ba 30%,
+        #b38728 70%,
+        #fbf5b7 85%,
+        #aa771c 100%
+      );
+
+      /* Fonts */
+      --font-headings: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: all 0.2s ease;
+    }
+
+    /* --- Base reset --- */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: #050505;
-      color: #f5f5f5;
-      line-height: 1.6;
+      background-color: var(--color-bg);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    /* --- Ambient Cinematic Background Glows & Pattern --- */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at 50% 20%, rgba(191, 149, 63, 0.07) 0%, transparent 55%),
+        radial-gradient(circle at 10% 75%, rgba(170, 119, 28, 0.03) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+      z-index: -1;
+      pointer-events: none;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
+    /* --- Container & Layout --- */
+    .landing-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: space-between;
+      z-index: 1;
     }
 
-    /* HEADER */
-
-    header {
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(212,175,55,.18);
+    /* --- Header Component --- */
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease-out;
     }
 
-    .brand {
-      text-align: center;
-      letter-spacing: 5px;
-      font-size: 14px;
-      color: #d4af37;
-      font-weight: bold;
+    .logo {
+      font-family: var(--font-headings);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
     }
 
-    .location {
-      text-align: center;
-      margin-top: 5px;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #888;
+    .logo span {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .badge-confidential {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--color-gold-primary);
+      border: 1px solid var(--color-gold-border);
+      padding: 6px 14px;
+      border-radius: 50px;
+      background: rgba(191, 149, 63, 0.03);
       text-transform: uppercase;
     }
 
-    /* HERO */
-
-    .hero {
-      text-align: center;
-      padding: 80px 20px 70px;
-      background:
-        radial-gradient(circle at center, rgba(212,175,55,.09), transparent 48%);
+    /* --- Main content grid --- */
+    .main-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.5rem;
+      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .eyebrow {
-      color: #d4af37;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 3px;
+    /* --- Squeeze Copy Section --- */
+    .hero-copy {
+      max-width: 750px;
+      text-align: center;
+    }
+
+    .pre-title {
+      font-family: var(--font-headings);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      color: var(--color-gold-primary);
+      margin-bottom: 1.25rem;
+      display: inline-block;
     }
 
-    h1 {
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 1;
-      letter-spacing: 2px;
-      font-weight: 500;
-      margin-bottom: 22px;
+    .h1-title {
+      font-family: var(--font-headings);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--color-text-primary);
+      margin-bottom: 1.5rem;
     }
 
-    .hero h2 {
-      color: #d4af37;
-      font-size: clamp(21px, 3vw, 32px);
-      font-weight: normal;
-      margin-bottom: 25px;
-    }
-
-    .hero-text {
-      max-width: 760px;
-      margin: auto;
-      color: #bdbdbd;
-      font-family: Arial, sans-serif;
-      font-size: 17px;
-    }
-
-    /* FREE BOOK */
-
-    .free-book {
-      padding: 70px 0;
-    }
-
-    .section-label {
-      text-align: center;
-      color: #d4af37;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .free-book h2,
-    .premium h2 {
-      text-align: center;
-      font-size: clamp(32px, 5vw, 50px);
-      font-weight: normal;
-      margin-bottom: 12px;
+    .gold-gradient-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
     }
 
     .subtitle {
-      text-align: center;
-      color: #aaa;
-      font-family: Arial, sans-serif;
-      margin-bottom: 45px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--color-text-secondary);
+      max-width: 680px;
+      margin: 0 auto;
     }
 
-    .book-card {
-      max-width: 900px;
-      margin: auto;
-      padding: 45px;
-      border: 1px solid rgba(212,175,55,.35);
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.035),
-        rgba(212,175,55,.025)
-      );
-      box-shadow: 0 20px 70px rgba(0,0,0,.5);
+    /* --- Glassmorphism Squeeze Card --- */
+    .squeeze-card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--color-card-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid var(--color-gold-border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(191, 149, 63, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+      margin-bottom: 2rem;
     }
 
-    .book-title {
-      text-align: center;
-      font-size: clamp(30px, 5vw, 48px);
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-
-    .book-subtitle {
-      text-align: center;
-      color: #d4af37;
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
-
-    .free-badge {
-      width: fit-content;
-      margin: 0 auto 30px;
-      padding: 8px 20px;
-      border: 1px solid #d4af37;
-      color: #d4af37;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .book-description {
-      max-width: 700px;
-      margin: auto;
-      text-align: center;
-      color: #c4c4c4;
-      font-family: Arial, sans-serif;
-    }
-
-    /* PILARS */
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .pillar {
-      padding: 28px;
-      border-top: 1px solid rgba(212,175,55,.5);
-      background: rgba(255,255,255,.025);
-    }
-
-    .pillar-number {
-      color: #d4af37;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-
-    .pillar h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      font-weight: normal;
-    }
-
-    .pillar p {
-      color: #999;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    /* FORM */
-
-    .access {
-      max-width: 650px;
-      margin: 50px auto 0;
-      text-align: center;
-    }
-
-    .access-title {
-      font-size: 25px;
-      margin-bottom: 15px;
-    }
-
-    .email-form {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .email-form input {
-      flex: 1;
-      padding: 17px;
-      background: #111;
-      border: 1px solid #444;
-      color: white;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .email-form input:focus {
-      border-color: #d4af37;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 17px 28px;
-      background: #d4af37;
-      color: #050505;
-      border: none;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: .25s;
-    }
-
-    .button:hover {
-      background: #f0d56a;
-      transform: translateY(-1px);
-    }
-
-    .privacy {
-      margin-top: 15px;
-      color: #777;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-    }
-
-    .privacy a {
-      color: #aaa;
-      text-decoration: underline;
-    }
-
-    .security {
-      margin-top: 18px;
-      color: #777;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-    }
-
-    /* PREMIUM */
-
-    .premium {
-      padding: 100px 0;
-      border-top: 1px solid rgba(212,175,55,.12);
-      background: #080808;
-    }
-
-    .premium-card {
-      max-width: 950px;
-      margin: auto;
-      border: 1px solid rgba(212,175,55,.35);
-      padding: 55px;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(212,175,55,.06),
-          transparent 45%
-        );
-    }
-
-    .premium-badge {
-      text-align: center;
-      color: #d4af37;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .premium-title {
-      text-align: center;
-      font-size: clamp(32px, 5vw, 52px);
-      margin-bottom: 10px;
-      font-weight: normal;
-    }
-
-    .premium-subtitle {
-      text-align: center;
-      color: #d4af37;
-      font-size: 21px;
-      margin-bottom: 35px;
-    }
-
-    .premium-description {
-      max-width: 750px;
-      margin: auto;
-      text-align: center;
-      color: #aaa;
-      font-family: Arial, sans-serif;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin: 40px 0;
-    }
-
-    .feature {
-      padding: 25px;
-      background: rgba(255,255,255,.025);
-      border-left: 2px solid #d4af37;
-    }
-
-    .feature h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .feature p {
-      color: #999;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    .price {
-      text-align: center;
-      margin: 40px 0 25px;
-    }
-
-    .price-number {
-      font-size: 52px;
-      color: #d4af37;
-    }
-
-    .price-label {
-      display: block;
-      color: #777;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-    }
-
-    .buy-container {
-      text-align: center;
-    }
-
-    .buy-button {
-      display: inline-block;
-      padding: 19px 40px;
-      background: #d4af37;
-      color: #050505;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      letter-spacing: 1px;
-      transition: .25s;
-    }
-
-    .buy-button:hover {
-      background: #f0d56a;
+    .squeeze-card:hover {
+      border-color: rgba(191, 149, 63, 0.35);
+      box-shadow:
+        0 30px 60px -10px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(191, 149, 63, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
       transform: translateY(-2px);
     }
 
-    .disclaimer {
-      max-width: 700px;
-      margin: 25px auto 0;
+    /* Card ambient shimmer line */
+    .squeeze-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(191, 149, 63, 0.02) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-20deg);
+      pointer-events: none;
+      animation: ambientShine 12s infinite linear;
+    }
+
+    .cta-heading {
+      font-family: var(--font-headings);
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.4;
       text-align: center;
-      color: #666;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      line-height: 1.7;
+      color: var(--color-text-primary);
+      margin-bottom: 1.75rem;
     }
 
-    /* DIFFERENCE */
-
-    .difference {
-      padding: 80px 0;
+    /* --- Form styling --- */
+    .capture-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
     }
 
-    .difference h2 {
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .email-input {
+      width: 100%;
+      padding: 1.1rem 1.2rem;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      outline: none;
+      transition: var(--transition-smooth);
       text-align: center;
-      font-size: 38px;
-      font-weight: normal;
-      margin-bottom: 40px;
     }
 
-    .comparison {
-      max-width: 850px;
-      margin: auto;
+    .email-input:focus {
+      border-color: var(--color-gold-border-focus);
+      background: rgba(0, 0, 0, 0.75);
+      box-shadow: 0 0 15px rgba(191, 149, 63, 0.15);
+    }
+
+    .email-input::placeholder {
+      color: var(--color-text-muted);
+      opacity: 0.8;
+    }
+
+    /* Checkbox RGPD */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      text-align: left;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--color-gold-primary);
+    }
+
+    .checkbox-wrapper label {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    .checkbox-wrapper label a {
+      color: var(--color-gold-primary);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    .checkbox-wrapper label a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Gold Premium Button --- */
+    .btn-submit {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--gold-gradient);
+      background-size: 200% auto;
+      background-position: left center;
+      border: none;
+      border-radius: 8px;
+      color: #050505;
+      font-family: var(--font-headings);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(170, 119, 28, 0.25);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-submit:hover {
+      background-position: right center;
+      box-shadow: 0 8px 25px rgba(191, 149, 63, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 10px rgba(191, 149, 63, 0.2);
+    }
+
+    /* Button Shimmer Effect on Hover */
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      transition: none;
+    }
+
+    .btn-submit:hover::before {
+      animation: buttonShimmer 1.5s infinite ease-in-out;
+    }
+
+    .btn-submit:disabled {
+      background: #27272a;
+      color: #71717a;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .btn-submit:disabled::before {
+      display: none;
+    }
+
+    /* Loader elements inside button */
+    .btn-loader {
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(0, 0, 0, 0.15);
+      border-top-color: #000000;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .security-note {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      margin-top: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .security-note svg {
+      width: 12px;
+      height: 12px;
+      fill: var(--color-text-muted);
+    }
+
+    /* --- Features section (Authority builders) --- */
+    .authority-pillars {
+      width: 100%;
+      max-width: 900px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1px solid #292929;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .comparison-column {
-      padding: 35px;
+    @media (min-width: 768px) {
+      .authority-pillars {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
-    .comparison-column:first-child {
-      border-right: 1px solid #292929;
+    .pillar-card {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: var(--transition-fast);
     }
 
-    .comparison-column h3 {
-      color: #d4af37;
-      font-size: 23px;
-      margin-bottom: 20px;
+    .pillar-card:hover {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(191, 149, 63, 0.1);
     }
 
-    .comparison-column p {
-      color: #aaa;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      margin-bottom: 12px;
+    .pillar-num {
+      font-family: var(--font-headings);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-gold-primary);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
-    /* FOOTER */
+    .pillar-title {
+      font-family: var(--font-headings);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--color-text-primary);
+    }
 
-    footer {
-      padding: 45px 20px;
-      border-top: 1px solid #1d1d1d;
+    .pillar-desc {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--color-text-secondary);
+    }
+
+    /* --- Footer Component --- */
+    .footer {
+      width: 100%;
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
       text-align: center;
-      color: #666;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
     }
 
     .footer-links {
-      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
-      margin: 0 8px;
-      color: #999;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      transition: var(--transition-fast);
+      letter-spacing: 0.05em;
     }
 
     .footer-links a:hover {
-      color: #d4af37;
+      color: var(--color-gold-primary);
     }
 
-    /* MOBILE */
+    .disclaimer {
+      max-width: 800px;
+      font-size: 0.68rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+    }
 
-    @media (max-width: 768px) {
+    .copyright {
+      font-size: 0.68rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.05em;
+    }
 
-      .hero {
-        padding: 55px 15px;
+    /* --- Keyframe Animations --- */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-
-      .book-card,
-      .premium-card {
-        padding: 30px 20px;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      .pillars {
-        grid-template-columns: 1fr;
-      }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
-      .features {
-        grid-template-columns: 1fr;
-      }
+    @keyframes buttonShimmer {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
 
-      .email-form {
-        flex-direction: column;
-      }
+    @keyframes ambientShine {
+      0% { left: -150%; }
+      100% { left: 150%; }
+    }
 
-      .email-form .button {
-        width: 100%;
-      }
+    /* --- Custom Styles for Soberanía Patrimonial Sales Card --- */
+    .soberania-card-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
-      .comparison {
-        grid-template-columns: 1fr;
-      }
+    .soberania-card {
+      background: var(--color-card-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid var(--color-gold-border);
+      border-radius: 16px;
+      padding: 3.5rem 2.5rem;
+      box-shadow:
+        0 30px 60px -12px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(191, 149, 63, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
 
-      .comparison-column:first-child {
-        border-right: none;
-        border-bottom: 1px solid #292929;
-      }
+    .soberania-card:hover {
+      border-color: rgba(191, 149, 63, 0.35);
+      box-shadow:
+        0 40px 70px -10px rgba(0, 0, 0, 0.9),
+        0 0 65px rgba(191, 149, 63, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
 
-      .footer-links a {
-        display: inline-block;
-        margin: 5px 7px;
+    .soberania-title {
+      font-family: var(--font-headings);
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff 30%, #e6e6e6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .soberania-subtitle {
+      font-family: var(--font-headings);
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 500;
+      color: var(--color-gold-primary);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .soberania-intro {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+      font-weight: 300;
+      max-width: 620px;
+      margin: 0 auto 3rem auto;
+    }
+
+    .soberania-list {
+      text-align: left;
+      max-width: 520px;
+      margin: 0 auto 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .soberania-item {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+    }
+
+    .soberania-icon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .soberania-icon-wrapper svg {
+      width: 15px;
+      height: 15px;
+      fill: var(--color-gold-primary);
+    }
+
+    .soberania-item-title {
+      font-family: var(--font-headings);
+      color: var(--color-text-primary);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .soberania-item-desc {
+      color: var(--color-text-secondary);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .soberania-price-box {
+      margin-bottom: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
+    }
+
+    .soberania-price-amount {
+      font-family: var(--font-headings);
+      font-size: clamp(2.8rem, 6vw, 3.5rem);
+      font-weight: 800;
+      color: var(--color-text-primary);
+      line-height: 1;
+      background: linear-gradient(135deg, #ffffff 40%, var(--color-gold-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .soberania-price-desc {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .soberania-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .soberania-btn-primary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 1.15rem;
+      background: var(--gold-gradient);
+      background-size: 200% auto;
+      background-position: left center;
+      border: none;
+      border-radius: 8px;
+      color: #050505;
+      font-family: var(--font-headings);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(170, 119, 28, 0.25);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .soberania-btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+    }
+
+    .soberania-btn-primary:hover::before {
+      animation: buttonShimmer 1.5s infinite ease-in-out;
+    }
+
+    .soberania-btn-primary:hover {
+      box-shadow: 0 8px 25px rgba(191, 149, 63, 0.45);
+      transform: translateY(-2px);
+      background-position: right center;
+    }
+
+    .soberania-btn-secondary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 1.1rem;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      font-family: var(--font-headings);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    .soberania-btn-secondary:hover {
+      border-color: var(--color-gold-primary);
+      background-color: rgba(191, 149, 63, 0.04);
+      color: var(--color-gold-primary);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 600px) {
+      .soberania-card {
+        padding: 2.5rem 1.5rem;
       }
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="brand">CAPITAL INVISIBLE</div>
-  <div class="location">Informe Financiero · Investigación Independiente</div>
-</header>
+  <div class="landing-wrapper">
 
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <div class="eyebrow">
-    El tablero invisible
-  </div>
-
-  <h1>Capital Invisible</h1>
-
-  <h2>El rastro real del dinero</h2>
-
-  <p class="hero-text">
-    Descubre cómo funcionan el dinero, el crédito, los grandes gestores
-    de activos y las estructuras patrimoniales que permiten a determinados
-    inversores obtener liquidez sin vender necesariamente sus activos.
-  </p>
-
-</section>
-
-
-<!-- LIBRO GRATIS -->
-
-<section class="free-book">
-
-  <div class="container">
-
-    <div class="section-label">
-      Tu acceso gratuito
-    </div>
-
-    <h2>PRIMER LIBRO</h2>
-
-    <p class="subtitle">
-      Capital Invisible · Audiolibro completo
-    </p>
-
-
-    <div class="book-card">
-
-      <div class="free-badge">
-        Audiolibro completo · Gratis
+    <!-- Header Component -->
+    <header class="header">
+      <div class="logo">
+        CAPITAL <span>INVISIBLE</span>
       </div>
-
-      <div class="book-title">
-        CAPITAL INVISIBLE
+      <div class="badge-confidential">
+        Informe Confidencial, Ginebra Suiza
       </div>
+    </header>
 
-      <div class="book-subtitle">
-        El Tablero Invisible: El Rastro Real del Dinero
-      </div>
+    <!-- Main Content -->
+    <main class="main-content">
 
-      <p class="book-description">
-        Un recorrido por los mecanismos que intervienen en el sistema
-        financiero moderno: dinero fiduciario, bancos centrales,
-        grandes gestores de activos, deuda y construcción patrimonial.
-      </p>
+      <!-- Copy Intro Area -->
+      <section class="hero-copy">
+        <span class="pre-title">Descubre la mecánica oculta del sistema financiero</span>
+        <h1 class="h1-title">El Tablero Invisible<br><span class="gold-gradient-text">El Rastro Real del Dinero</span></h1>
+        <p class="subtitle">Aprende cómo operan el BIS y los megagestores, por qué el dinero fiduciario te descapitaliza, y cómo el 1% utiliza la deuda como activo.</p>
+      </section>
 
+      <!-- Glassmorphic Capture Card (integrated with MailerLite container styles) -->
+      <div id="mlb2-189439645777397475" class="squeeze-card ml-form-embedContainer ml-subscribe-form ml-subscribe-form-189439645777397475">
+        <h2 class="cta-heading">Ingresa tu correo para tener acceso al audiolibro Capital Invisible gratis.</h2>
 
-      <div class="pillars">
-
-        <div class="pillar">
-
-          <div class="pillar-number">
-            PILAR 01
-          </div>
-
-          <h3>Operativa Central</h3>
-
-          <p>
-            Comprende el papel del BIS y otros organismos dentro
-            de la arquitectura financiera internacional.
-          </p>
-
-        </div>
-
-
-        <div class="pillar">
-
-          <div class="pillar-number">
-            PILAR 02
-          </div>
-
-          <h3>Megagestores</h3>
-
-          <p>
-            Analiza el peso de grandes gestores como Vanguard,
-            BlackRock y State Street en los mercados globales.
-          </p>
-
-        </div>
-
-
-        <div class="pillar">
-
-          <div class="pillar-number">
-            PILAR 03
-          </div>
-
-          <h3>Activos & Deuda</h3>
-
-          <p>
-            Descubre cómo determinados inversores utilizan
-            activos como garantía para obtener liquidez.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- FORMULARIO -->
-
-      <div class="access">
-
-        <div class="access-title">
-          Recibe el audiolibro completo gratis
-        </div>
-
-        <p style="color:#888;font-family:Arial;font-size:14px;">
-          Introduce tu correo para obtener acceso.
-        </p>
+        <img src="mockup-capital.png" alt="Mockup El Capital Invisible" style="width: 100%; max-width: 320px; margin: 0 auto 1.5rem auto; display: block; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-3px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
 
         <!--
-          IMPORTANTE:
-          Sustituye ACTION por la URL real de tu sistema
-          de captura de emails.
+          CRM INTEGRATION INSTRUCTIONS:
+          Para conectar este formulario a tu CRM (Mailchimp, ActiveCampaign, Formspree, etc.):
+          1. Pega la URL de tu proveedor en el atributo 'action="..."' de abajo.
+          2. Asegúrate de que el método sea 'POST' (action="https://tucrm.com/api/...").
+          3. El script de JS interceptará el envío para procesar la suscripción localmente y por fetch,
+             y redirigirá inmediatamente al usuario a Payhip de forma transparente.
+
+          NOTA (ajuste): se removió target="_blank" del <form>. Con target="_blank" el envío
+          abre una pestaña nueva hacia MailerLite y el callback de éxito (ml_success_redirect)
+          redirige window.location.href de la pestaña ORIGINAL, que nunca recibió la petición.
+          Resultado real: el usuario se queda con dos pestañas -una en blanco/MailerLite y otra
+          sin redirigir-. El script de MailerLite (webforms.min.js) ya intercepta el submit vía
+          AJAX, así que no necesita target="_blank" para funcionar.
         -->
+        <form id="squeeze-form" class="capture-form ml-block-form row-form" action="https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/subscribe" data-code="" method="post">
+          <div class="input-wrapper">
+            <input
+              aria-label="email"
+              aria-required="true"
+              type="email"
+              name="fields[email]"
+              id="user-email"
+              class="email-input"
+              placeholder="Introduce tu correo privado..."
+              required
+              autocomplete="email"
+            >
+          </div>
 
-        <form
-          class="email-form"
-          action="#"
-          method="POST"
-        >
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+            <label for="privacy-consent">
+              He leído y acepto la <a href="politica-privacidad.html">Política de Privacidad</a>.
+            </label>
+          </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Tu correo electrónico"
-            required
-          >
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
 
-          <button
-            type="submit"
-            class="button"
-          >
-            DESCARGAR GRATIS
+          <button type="submit" id="btn-submit" class="btn-submit">
+            <span class="btn-text">Descargar Gratis</span>
+            <div class="btn-loader" id="btn-loader">
+              <span class="spinner"></span>
+              <span>Registrando...</span>
+            </div>
           </button>
-
         </form>
 
-        <div class="privacy">
+        <div class="security-note">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+          </svg>
+          Garantía de Privacidad • Enlace Seguro SSL
+        </div>
+      </div>
 
-          He leído y acepto la
-          <a href="https://capitalinvisible.online/politica-privacidad.html">
-            Política de Privacidad
-          </a>.
+      <!-- Authority Pillars (Deepening Squeeze Opt-ins) -->
+      <section class="authority-pillars">
 
+        <div class="pillar-card">
+          <span class="pillar-num">Pilar 01</span>
+          <h3 class="pillar-title">Operativa Central</h3>
+          <p class="pillar-desc">Descubre el papel real del BIS (Banco de Pagos Internacionales) en la pérdida progresiva de poder adquisitivo de las monedas fiduciarias.</p>
         </div>
 
-        <div class="security">
-          🔒 Privacidad protegida · Enlace seguro SSL
+        <div class="pillar-card">
+          <span class="pillar-num">Pilar 02</span>
+          <h3 class="pillar-title">Megagestores</h3>
+          <p class="pillar-desc">Cómo Vanguard, BlackRock y State Street concentran y dirigen flujos de capital masivos en los mercados financieros globales.</p>
         </div>
 
-      </div>
+        <div class="pillar-card">
+          <span class="pillar-num">Pilar 03</span>
+          <h3 class="pillar-title">Activos & Deuda</h3>
+          <p class="pillar-desc">El patrón que las grandes dinastías repiten generación tras generación para generar liquidez sin vender activos, y que rara vez se enseña fuera de la banca privada.</p>
+        </div>
+      </section>
 
-    </div>
+      <!-- Sección de Ventas: Soberanía Patrimonial (Upsell Card) -->
+      <section class="soberania-card-wrapper">
+        <div class="soberania-card">
 
-  </div>
-
-</section>
-
-
-<!-- SEGUNDO LIBRO -->
-
-<section class="premium">
-
-  <div class="container">
-
-    <div class="premium-card">
-
-      <div class="premium-badge">
-        Segundo libro · Edición premium
-      </div>
-
-      <div class="premium-title">
-        COMPRAR, PEDIR PRESTADO, MORIR
-      </div>
-
-      <div class="premium-subtitle">
-        El sistema financiero que nadie te enseñó
-      </div>
-
-      <p class="premium-description">
-        Un manual avanzado sobre patrimonio, activos, crédito respaldado
-        por inversiones, liquidez y planificación patrimonial.
-      </p>
-
-
-      <div class="features">
-
-        <div class="feature">
-
-          <h3>Estructuración de cartera</h3>
-
-          <p>
-            Conceptos para comprender la estructuración de una cartera
-            diversificada y el funcionamiento de los ratios LTV.
+          <h2 class="soberania-title">Comprar, Pedir Prestado, Morir</h2>
+          <div class="soberania-subtitle">El sistema financiero que nadie te enseñó</div>
+          <img src="cover.png" alt="Portada Comprar Pedir Prestado Morir" style="width: 100%; max-width: 320px; margin: 0 auto 2rem auto; display: block; filter: drop-shadow(0 25px 35px rgba(0,0,0,0.8)); transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+          <p class="soberania-intro">
+            El sistema financiero actual penaliza el trabajo y premia la propiedad. Este manual detalla los protocolos técnicos y legales que permiten aplicar la estrategia de soberanía patrimonial para proteger y multiplicar tus activos de forma fiscalmente eficiente.
           </p>
 
+          <!-- Lista de Beneficios con SVGs Premium -->
+          <ul class="soberania-list">
+
+            <li class="soberania-item">
+              <div class="soberania-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="soberania-item-title">Estructuración técnica de cartera</h4>
+                <p class="soberania-item-desc">Cómo configurar tu portafolio global en brókers de alta seguridad jurídica para optimizar los ratios de apalancamiento (LTV).</p>
+              </div>
+            </li>
+
+            <li class="soberania-item">
+              <div class="soberania-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="soberania-item-title">Manual de optimización fiscal legal</h4>
+                <p class="soberania-item-desc">Mecanismos técnicos para diferir y minimizar impuestos de renta, sucesiones y plusvalías usando normativas vigentes.</p>
+              </div>
+            </li>
+
+            <li class="soberania-item">
+              <div class="soberania-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2L2 22h20L12 2zm1 14h-2v-2h2v2zm0-4h-2V8h2v4z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="soberania-item-title">Protocolos de Crédito Lombard</h4>
+                <p class="soberania-item-desc">Uso táctico de la deuda productiva como motor de liquidez y crecimiento sin necesidad de liquidar posiciones.</p>
+              </div>
+            </li>
+
+            <li class="soberania-item">
+              <div class="soberania-icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                  <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="soberania-item-title">Audiolibro completo premium</h4>
+                <p class="soberania-item-desc">Audiolibro completo en edición premium. Narración de alta fidelidad con pausas tácticas integradas, diseñadas específicamente para un aprendizaje profundo y enfocado.</p>
+              </div>
+            </li>
+
+          </ul>
+
+          <!-- Bloque de Precio -->
+          <div class="soberania-price-box">
+            <div class="soberania-price-amount">11,99 $</div>
+            <div class="soberania-price-desc">Libro digital + Audiolibro completo</div>
+            <div style="font-size: 0.7rem; color: var(--color-text-muted); margin-top: 1rem; line-height: 1.4;">Contenido educativo. No constituye asesoramiento fiscal, legal ni de inversión.</div>
+          </div>
+
+          <!-- Botones de Acción (CTAs) -->
+          <div class="soberania-cta-group">
+
+            <!-- Enlace Principal (Payhip Checkout) -->
+            <a href="https://payhip.com/b/G7ath" class="soberania-btn-primary" target="_blank" rel="noopener noreferrer">
+              <svg style="width: 16px; height: 16px; fill: #050505; margin-right: 4px;" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              ACCEDER AL SISTEMA COMPLETO
+            </a>
+
+          </div>
+
         </div>
+      </section>
 
+    </main>
 
-        <div class="feature">
-
-          <h3>Fiscalidad patrimonial</h3>
-
-          <p>
-            Análisis educativo de mecanismos de diferimiento fiscal,
-            plusvalías y transmisión patrimonial según la normativa aplicable.
-          </p>
-
-        </div>
-
-
-        <div class="feature">
-
-          <h3>Crédito Lombard</h3>
-
-          <p>
-            Cómo funciona el crédito respaldado por valores y cuáles
-            son sus principales riesgos, costes y condiciones.
-          </p>
-
-        </div>
-
-
-        <div class="feature">
-
-          <h3>Audiolibro completo</h3>
-
-          <p>
-            Edición en audio del libro completo para escuchar el contenido
-            mientras estudias o te desplazas.
-          </p>
-
-        </div>
-
+    <!-- Footer Component -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="aviso-legal.html">Aviso Legal</a>
+        <a href="politica-privacidad.html">Política de Privacidad</a>
+        <a href="politica-cookies.html">Política de Cookies</a>
+        <a href="mailto:contacto@capitalinvisible.online">Contacto</a>
       </div>
-
-
-      <div class="price">
-
-        <span class="price-number">
-          11,99 $
-        </span>
-
-        <span class="price-label">
-          Libro digital + Audiolibro completo
-        </span>
-
-      </div>
-
-
-      <div class="buy-container">
-
-        <a
-          href="https://payhip.com/b/G7ath"
-          class="buy-button"
-          target="_blank"
-          rel="noopener"
-        >
-          OBTENER EL SISTEMA COMPLETO
-        </a>
-
-      </div>
-
-
       <p class="disclaimer">
-        Contenido educativo e informativo. No constituye asesoramiento
-        financiero, fiscal, legal ni contable. Las estrategias descritas
-        pueden implicar riesgos y su aplicación depende de las circunstancias
-        particulares y de la legislación aplicable.
+        Este documento e información asociada no constituyen asesoramiento de inversión, fiscal o contable. El análisis del sistema financiero se proporciona con fines informativos y educativos. Todos los derechos reservados.
       </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DIFERENCIA ENTRE LOS DOS LIBROS -->
-
-<section class="difference">
-
-  <div class="container">
-
-    <h2>
-      Dos libros. Dos niveles.
-    </h2>
-
-
-    <div class="comparison">
-
-
-      <div class="comparison-column">
-
-        <h3>Capital Invisible</h3>
-
-        <p>✓ Audiolibro completo</p>
-        <p>✓ Acceso gratuito</p>
-        <p>✓ Introducción al sistema financiero</p>
-        <p>✓ Dinero y poder adquisitivo</p>
-        <p>✓ BIS y arquitectura financiera</p>
-        <p>✓ Grandes gestores de activos</p>
-        <p>✓ Activos y deuda</p>
-
-      </div>
-
-
-      <div class="comparison-column">
-
-        <h3>Comprar, Pedir Prestado, Morir</h3>
-
-        <p>✓ Libro digital completo</p>
-        <p>✓ Audiolibro completo</p>
-        <p>✓ Contenido avanzado</p>
-        <p>✓ Construcción patrimonial</p>
-        <p>✓ Crédito respaldado por activos</p>
-        <p>✓ Conceptos de crédito Lombard</p>
-        <p>✓ Precio: 11,99 $</p>
-
-      </div>
-
-    </div>
+      <p class="copyright">
+        © 2026 Capital Invisible. Todos los derechos reservados.
+      </p>
+    </footer>
 
   </div>
 
-</section>
+  <!-- JavaScript for Form Submit UI State -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('squeeze-form');
+      const submitBtn = document.getElementById('btn-submit');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const btnLoader = document.getElementById('btn-loader');
+      const emailInput = document.getElementById('user-email');
 
+      form.addEventListener('submit', () => {
+        const email = emailInput.value.trim();
+        if (!email) return;
 
-<!-- FOOTER -->
+        // NOTA (ajuste): se removió el localStorage.setItem del lead. No aportaba nada al
+        // flujo real (MailerLite ya es la fuente de verdad del suscriptor) y localStorage
+        // no persiste entre dominios/dispositivos, así que no sirve para "otras partes de
+        // la plataforma" como decía el comentario original. Si en el futuro necesitas
+        // reconocer al visitante recurrente en el propio navegador, se puede reintroducir
+        // de forma intencional.
 
-<footer>
+        // Animación Premium del Botón de Envío (MailerLite procesará la suscripción vía AJAX)
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'flex';
+      });
+    });
+  </script>
 
-  <div class="footer-links">
-
-    <a href="https://capitalinvisible.online/aviso-legal.html">
-      Aviso Legal
-    </a>
-
-    <a href="https://capitalinvisible.online/politica-privacidad.html">
-      Política de Privacidad
-    </a>
-
-    <a href="https://capitalinvisible.online/politica-cookies.html">
-      Política de Cookies
-    </a>
-
-    <a href="mailto:contacto@capitalinvisible.online">
-      Contacto
-    </a>
-
-  </div>
-
-  <p>
-    © 2026 Capital Invisible. Todos los derechos reservados.
-  </p>
-
-  <p style="margin-top:10px;">
-    La información proporcionada tiene fines exclusivamente educativos
-    e informativos y no constituye asesoramiento de inversión, fiscal,
-    legal o contable.
-  </p>
-
-</footer>
-
+  <!-- MailerLite Integration Scripts -->
+  <script>
+    function ml_webform_success_189439645777397475() {
+      ml_success_redirect();
+    }
+    function ml_webform_success_42242373() {
+      ml_success_redirect();
+    }
+    function ml_success_redirect() {
+      try {
+        var $ = ml_jQuery || jQuery;
+        if ($) {
+          $('.ml-subscribe-form-189439645777397475 .row-success').show();
+          $('.ml-subscribe-form-189439645777397475 .row-form').hide();
+          $('.ml-subscribe-form-42242373 .row-success').show();
+          $('.ml-subscribe-form-42242373 .row-form').hide();
+        }
+      } catch (err) {
+        console.warn("MailerLite UI state transition failed:", err);
+      }
+      // Redirigir al lector del audiolibro gratuito con un retraso de 1500ms para
+      // dar tiempo a que se registre la petición de red de MailerLite
+      setTimeout(function() {
+        window.location.href = "https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/capital/app.html";
+      }, 1500);
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+  <script>
+    fetch("https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/takel")
+  </script>
 </body>
 </html>
