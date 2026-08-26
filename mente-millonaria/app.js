@@ -4,10 +4,10 @@
 // ============================================================
 
 const PARTES = {
-  '01_capitulo_1': 'Parte I — La ilusión',
-  '05_capitulo_5': 'Parte II — La invisibilidad',
-  '11_capitulo_11': 'Parte III — La construcción',
-  '17_capitulo_17': 'Parte IV — La protección',
+  '06_cap_tulo_1_la_trampa_del_h_mster_diferencia_letal_': 'Parte I — La ilusión',
+  '10_cap_tulo_5_el_coste_de_la_ignorancia_tu_cerebro_no': 'Parte II — La invisibilidad',
+  '16_cap_tulo_11_el_presupuesto_no_es_una_dieta_es_un_m': 'Parte III — La construcción',
+  '22_cap_tulo_17_la_deuda_que_destruye_patrimonio_deuda': 'Parte IV — La protección',
 };
 
 let indiceActual = 0;
