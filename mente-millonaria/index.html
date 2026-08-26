@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Mente Millonaria es Invisible — Audiolibro</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Panel lateral: portada + índice -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="cover.png" alt="Portada del libro" class="cover" id="coverImg">
+      <h1 class="book-title">La Mente Millonaria<br>es Invisible</h1>
+      <p class="book-author">Albert Sierra</p>
+      <p class="book-imprint">Capital Invisible</p>
+    </div>
+
+    <nav class="toc" id="toc" aria-label="Índice de capítulos">
+      <!-- generado por JS -->
+    </nav>
+
+    <button class="credits-btn" id="creditsBtn" aria-haspopup="dialog">ⓘ Créditos y copyright</button>
+  </aside>
+
+  <!-- Panel principal: lectura sincronizada -->
+  <main class="reader">
+    <button class="menu-toggle" id="menuToggle" aria-label="Mostrar índice">☰</button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">☼</button>
+
+    <div class="reader-inner">
+      <p class="reader-eyebrow" id="readerEyebrow">Capítulo</p>
+      <h2 class="reader-title" id="readerTitle">Cargando…</h2>
+
+      <div class="reader-text" id="readerText" aria-live="polite">
+        <!-- oraciones generadas por JS -->
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<!-- Panel de créditos / copyright -->
+<div class="credits-overlay" id="creditsOverlay" role="dialog" aria-modal="true" aria-labelledby="creditsTitle">
+  <div class="credits-modal">
+    <button class="credits-close" id="creditsClose" aria-label="Cerrar">✕</button>
+
+    <div class="credits-cover-wrap">
+      <img src="cover.png" alt="Portada del libro" class="credits-cover">
+    </div>
+
+    <p class="credits-eyebrow">Educación financiera</p>
+    <h2 class="credits-title" id="creditsTitle">La Mente Millonaria<br>es Invisible</h2>
+    <p class="credits-subtitle">Cómo piensa, construye y protege su patrimonio la gente que nunca parece rica.</p>
+    <p class="credits-author">Albert Sierra</p>
+    <p class="credits-imprint">Capital Invisible</p>
+
+    <hr class="credits-rule">
+
+    <p class="credits-legal">
+      Copyright © 2026 Albert Sierra.<br>
+      Publicado bajo el sello Capital Invisible. Todos los derechos reservados.
+      Ninguna parte de esta publicación podrá reproducirse, distribuirse o
+      transmitirse, total o parcialmente, por ningún medio, ya sea electrónico,
+      mecánico, de fotocopiado, grabación o cualquier otro, sin la autorización
+      previa y por escrito del editor, salvo en el caso de citas breves
+      incluidas en reseñas críticas u otros usos no comerciales permitidos por
+      la legislación sobre derechos de autor.
+    </p>
+
+    <p class="credits-legal">
+      <strong>Aviso de exención de responsabilidad:</strong> este libro ha
+      sido escrito con fines exclusivamente informativos y educativos. Ni el
+      autor ni el editor prestan servicios legales, contables, fiscales o de
+      asesoramiento financiero mediante esta publicación. La información
+      contenida en esta obra no sustituye el consejo de un profesional
+      cualificado. Si necesita asesoramiento específico para su situación
+      personal, consulte con un profesional competente.
+    </p>
+
+    <p class="credits-legal">
+      <strong>Nota sobre los personajes:</strong> Ernesto, Ricardo, Marina y
+      David son composiciones ilustrativas inspiradas en patrones comunes,
+      no personas reales. Cualquier parecido con personas reales es pura
+      coincidencia.
+    </p>
+
+    <div class="credits-audio">
+      <button class="credits-play-btn" id="creditsPlayBtn">▶ Escuchar el audiolibro desde el principio</button>
+    </div>
+  </div>
+</div>
+
+<!-- Barra de reproducción fija -->
+<footer class="player" id="player">
+  <div class="player-track">
+    <span class="time current" id="timeCurrent">0:00</span>
+    <input type="range" id="seekBar" class="seek-bar" min="0" max="100" value="0" step="0.1" aria-label="Progreso">
+    <span class="time total" id="timeTotal">0:00</span>
+  </div>
+
+  <div class="player-controls">
+    <div class="volume-control">
+      <button class="ctrl-btn volume-btn" id="volumeBtn" aria-label="Silenciar" title="Silenciar">🔊</button>
+      <input type="range" id="volumeBar" class="volume-bar" min="0" max="1" step="0.05" value="0.8" aria-label="Volumen">
+    </div>
+
+    <button class="ctrl-btn" id="prevBtn" aria-label="Capítulo anterior" title="Capítulo anterior">⏮</button>
+    <button class="ctrl-btn play" id="playBtn" aria-label="Reproducir" title="Reproducir / Pausa">▶</button>
+    <button class="ctrl-btn" id="nextBtn" aria-label="Siguiente capítulo" title="Siguiente capítulo">⏭</button>
+
+    <div class="speed-control">
+      <label for="speedSelect">Velocidad</label>
+      <select id="speedSelect">
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="1.75">1.75×</option>
+        <option value="2">2×</option>
+      </select>
+    </div>
+  </div>
+</footer>
+
+<audio id="audioEl" preload="metadata"></audio>
+
+<script src="capitulos_data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
