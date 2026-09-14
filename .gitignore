@@ -24,3 +24,11 @@ build/
 # Archivos de audio (grandes archivos multimedia)
 audio/
 *.mp3
+*.m4b
+*.m4a
+
+# Backups y artefactos de build de audiolibro (no forman parte del sitio)
+*.bak
+*_ANTES_*.js
+concat_list.txt
+chapters_metadata.txt
