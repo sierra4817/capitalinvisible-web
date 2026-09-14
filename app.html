@@ -1038,9 +1038,50 @@
       }, 1500);
     }
   </script>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
-  <script>
+  <script type="text/plain" data-cookie-category="mailerlite" data-src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b"></script>
+  <script type="text/plain" data-cookie-category="mailerlite">
     fetch("https://assets.mailerlite.com/jsonp/2409609/forms/189439645777397475/takel")
+  </script>
+
+  <!-- Banner de consentimiento de cookies -->
+  <div id="cookie-banner" style="display:none; position:fixed; left:0; right:0; bottom:0; z-index:9999; background:#0c0c0e; border-top:1px solid rgba(191,149,63,0.3); padding:16px 20px; font-family:Arial,sans-serif; color:#c4c4c4; font-size:13px; line-height:1.5;">
+    <div style="max-width:960px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px;">
+      <div style="flex:1; min-width:240px;">
+        Usamos cookies técnicas esenciales y de MailerLite (necesarias para gestionar tu suscripción gratuita). Puedes aceptarlas o rechazar las no esenciales. Más info en nuestra <a href="politica-cookies.html" style="color:#bf953f;">Política de Cookies</a>.
+      </div>
+      <div style="display:flex; gap:10px; flex-shrink:0;">
+        <button id="cookie-reject" style="background:transparent; border:1px solid rgba(255,255,255,0.25); color:#c4c4c4; padding:8px 16px; font-size:12px; border-radius:4px; cursor:pointer;">Solo esenciales</button>
+        <button id="cookie-accept" style="background:#bf953f; border:none; color:#050505; padding:8px 16px; font-size:12px; font-weight:bold; border-radius:4px; cursor:pointer;">Aceptar</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      function loadConsentedScripts() {
+        document.querySelectorAll('script[data-cookie-category="mailerlite"]').forEach(function(oldScript) {
+          var newScript = document.createElement('script');
+          newScript.type = 'text/javascript';
+          if (oldScript.dataset.src) { newScript.src = oldScript.dataset.src; }
+          else { newScript.textContent = oldScript.textContent; }
+          oldScript.parentNode.replaceChild(newScript, oldScript);
+        });
+      }
+      var consent = localStorage.getItem('cookie_consent');
+      if (consent === 'accepted') {
+        loadConsentedScripts();
+      } else if (consent !== 'rejected') {
+        document.getElementById('cookie-banner').style.display = 'block';
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'accepted');
+        document.getElementById('cookie-banner').style.display = 'none';
+        loadConsentedScripts();
+      });
+      document.getElementById('cookie-reject').addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'rejected');
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+    })();
   </script>
 </body>
 </html>
