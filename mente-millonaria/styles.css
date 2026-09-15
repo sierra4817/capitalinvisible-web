@@ -241,6 +241,8 @@ body {
   margin: 0 0 1.1rem;
 }
 .credits-legal strong { color: var(--ink-dim); }
+.credits-legal a { color: var(--gold); text-decoration: none; }
+.credits-legal a:hover { text-decoration: underline; }
 
 .credits-audio {
   margin-top: 0.4rem;

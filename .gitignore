@@ -15,6 +15,7 @@ node_modules/
 # Archivos de entorno o configuración local
 .env
 .env.local
+.claude/settings.local.json
 
 # Archivos temporales de construcción
 dist/

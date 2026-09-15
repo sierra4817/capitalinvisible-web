@@ -570,6 +570,7 @@ const BOOK_DATA = [
       {
         "title": "LECCIÓN III: Pedir Prestado: La deuda es la máquina de la riqueza",
         "content": [
+          "Nota del editor: los ejemplos de esta lección son ilustrativos y no constituyen asesoramiento financiero, fiscal ni legal personalizado. Los tipos de interés, comisiones y ratios LTV citados son orientativos, cambian con el tiempo y varían según entidad, país y perfil del cliente. Antes de contratar cualquier producto de crédito con garantía de valores, consulta con un asesor financiero y fiscal cualificado en tu jurisdicción.",
           {
             "type": "heading",
             "content": "LA CONSULTA EN UBS: EL LOMBARD EN CHF"
@@ -852,6 +853,7 @@ const BOOK_DATA = [
       {
         "title": "LECCIÓN IV: Morir: El último truco fiscal y el legado familiar",
         "content": [
+          "Nota del editor: esta lección describe mecanismos fiscales que varían radicalmente según el país. En particular, el step-up in basis que se explica más adelante es una regla del sistema fiscal estadounidense y no tiene un equivalente directo en España ni en la mayoría de países de Europa continental. Los ejemplos numéricos son ilustrativos. Consulta siempre con un asesor fiscal y sucesorio de tu jurisdicción antes de tomar decisiones.",
           "El último privilegio fiscal",
           {
             "type": "heading",
@@ -860,6 +862,7 @@ const BOOK_DATA = [
           "Si los dos primeros movimientos del Juego de la Riqueza son poderosos, el tercero es directamente extraordinario. Porque resuelve el único problema aparente de la estrategia: ¿qué pasa con todas esas plusvalías latentes acumuladas a lo largo de décadas cuando el titular de los activos muere?",
           "La respuesta, al menos en el sistema fiscal americano donde esta regla es especialmente poderosa, es que desaparecen. Se evaporan. Décadas de ganancias no realizadas quedan completamente exentas de impuestos sobre las plusvalías gracias a un mecanismo llamado step-up in basis, que podríamos traducir como ajuste o actualización de la base imponible.",
           "El funcionamiento es el siguiente. Cuando alguien muere y sus herederos reciben un activo, la base imponible de ese activo, es decir, el valor desde el que se calcularán las futuras plusvalías, se actualiza al precio de mercado en el momento del fallecimiento.",
+          "Importante: esta regla del step-up in basis es específica del sistema fiscal de Estados Unidos. España, y la mayoría de países de Europa continental, no tienen un mecanismo equivalente que elimine sin más las plusvalías latentes al fallecer — en su lugar aplican su propio Impuesto de Sucesiones y reglas distintas sobre la base imponible de los activos heredados. El ejemplo numérico que sigue (en euros, con un personaje ficticio) sirve para ilustrar el concepto tal y como funciona bajo la ley estadounidense, no como una estrategia directamente aplicable a un residente fiscal español.",
           {
             "type": "heading",
             "content": "Ejemplo del step-up in basis"
@@ -1338,6 +1341,7 @@ const BOOK_DATA = [
       {
         "title": "APÉNDICE II: GLOSARIO ENCICLOPÉDICO DEL ARQUITECTO FINANCIERO",
         "content": [
+          "Nota del editor: este glosario incluye nombres de bancos, productos y entidades reales solo como ejemplos ilustrativos de cómo funciona el sector, no como recomendación de compra, contratación o inversión. Las condiciones (tipos, comisiones, umbrales de patrimonio) cambian constantemente y varían por entidad y país. Ninguna mención aquí constituye asesoramiento financiero, fiscal o legal personalizado: consulta siempre con un profesional cualificado antes de actuar.",
           "1. SARON (Swiss Average Rate Overnight)",
           "Explicación Técnica del Concepto El SARON es el índice de referencia para los préstamos a corto plazo en francos suizos (CHF), sustituyendo al antiguo LIBOR. A diferencia del LIBOR, que se basaba en estimaciones de paneles bancarios sobre dónde creerían que podrían prestar dinero, el SARON es un índice basado en transacciones reales y observadas en el mercado de préstamos interbancarios asegurados por el Banco Nacional Suizo (SNB). Es, técnicamente, el promedio ponderado de las tasas de interés de las transacciones overnight (de un día para otro) en el mercado de repos (repurchase agreements).",
           "Desde un punto de vista estructural, el SARON es una tasa “compuesta”. Esto significa que para un préstamo a plazos más largos, la tasa final se calcula sumando las tasas diarias del SARON durante el periodo del préstamo. Esto elimina la incertidumbre del “forward-looking” (mirar hacia adelante) y ancla el coste del dinero a la realidad inmediata de la liquidez suiza. En la jerarquía financiera, el SARON es el corazón del sistema; si el SNB mueve su tasa guía, el SARON reacciona instantáneamente, afectando cada hipoteca y crédito Lombard en el país.",
