@@ -911,7 +911,7 @@ const CAPITULOS = [
    "La empresa quebró dos años después.",
    "No perdió solo su empleo.",
    "Perdió, el mismo mes, los ahorros que debían sustituir ese empleo.",
-   "Empresas gigantes como Kodak o Nokia quebraron también, a pesar de que miles de empleados y accionistas estaban igual de convencidos de conocerlas bien.",
+   "Empresas gigantes como Kodak o Enron quebraron también, a pesar de que miles de empleados y accionistas estaban igual de convencidos de conocerlas bien.",
    "Si pones todos tus huevos en una cesta, tienes que vigilarla las 24 horas, y ni así te libras del cisne negro.",
    "La aguja y el pajar\n\nJohn Bogle lo resumió mejor: no busques la aguja en el pajar; compra el pajar entero.",
    "La mayoría de las acciones son mediocres.",
