@@ -1063,7 +1063,8 @@
       const btnLoader = document.getElementById('btn-loader');
       const emailInput = document.getElementById('user-email');
 
-      form.addEventListener('submit', () => {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
         const email = emailInput.value.trim();
         if (!email) return;
 
@@ -1074,10 +1075,40 @@
         // reconocer al visitante recurrente en el propio navegador, se puede reintroducir
         // de forma intencional.
 
-        // Animación Premium del Botón de Envío (MailerLite procesará la suscripción vía AJAX)
+        // Animación Premium del Botón de Envío
         submitBtn.disabled = true;
         btnText.style.display = 'none';
         btnLoader.style.display = 'flex';
+
+        // NOTA (fix registro colgado): antes se dependía de que webforms.min.js
+        // (cargado solo tras aceptar el banner de cookies) interceptase este submit
+        // vía AJAX y llamase a ml_webform_success_*(). Si el usuario no aceptaba el
+        // banner, ese script nunca se activaba, no había preventDefault() en ningún
+        // sitio, y el navegador ejecutaba el envío nativo del formulario, saliendo del
+        // sitio hacia la respuesta JSON cruda de MailerLite. Ahora el registro se hace
+        // aquí mismo por fetch(), sin depender de ese script externo.
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data && data.success) {
+              ml_success_redirect();
+            } else {
+              console.warn('MailerLite no confirmó el registro:', data);
+              submitBtn.disabled = false;
+              btnText.style.display = '';
+              btnLoader.style.display = 'none';
+            }
+          })
+          .catch((err) => {
+            console.warn('Error al registrar el email:', err);
+            submitBtn.disabled = false;
+            btnText.style.display = '';
+            btnLoader.style.display = 'none';
+          });
       });
     });
   </script>
