@@ -1,16 +1,3 @@
-const safeStorage = {
-    getItem(key) {
-        try { return localStorage.getItem(key); } catch (e) { return this._fallback[key] || null; }
-    },
-    setItem(key, value) {
-        try { localStorage.setItem(key, value); } catch (e) { this._fallback[key] = String(value); }
-    },
-    removeItem(key) {
-        try { localStorage.removeItem(key); } catch (e) { delete this._fallback[key]; }
-    },
-    _fallback: {}
-};
-
 const bookData = [
     {
         "title": "Portada y aviso legal",
@@ -716,12 +703,17 @@ const chapterAudios = [
     "26_sobre_autor.mp3"
 ];
 
+// Pre-recorded audio files mapping
+
 // ==========================================================================
 // STATE MANAGEMENT
 // ==========================================================================
 let currentChapterIndex = 0;
 let isPlaying = false;
 let playbackRate = 1.0;
+let sentencesList = [];
+let currentSentenceIndex = -1;
+let sentenceTimeBoundaries = [];
 
 // Persistent User Progress & Settings
 let completedChapters = [];
@@ -763,19 +755,19 @@ const btnResumeReading = document.getElementById('btn-resume-reading');
 // ==========================================================================
 function loadSavedProgress() {
     try {
-        const savedCompleted = safeStorage.getItem('completed_chapters');
+        const savedCompleted = localStorage.getItem('completed_chapters');
         completedChapters = savedCompleted ? JSON.parse(savedCompleted) : [];
         
-        const savedLastChapter = safeStorage.getItem('last_active_chapter');
+        const savedLastChapter = localStorage.getItem('last_active_chapter');
         lastActiveChapter = savedLastChapter ? parseInt(savedLastChapter) : 0;
         
-        const savedFontSize = safeStorage.getItem('reader_font_size');
+        const savedFontSize = localStorage.getItem('reader_font_size');
         fontSizeLevel = savedFontSize ? parseFloat(savedFontSize) : 1.35;
         
-        const savedFontFamily = safeStorage.getItem('reader_font_family');
+        const savedFontFamily = localStorage.getItem('reader_font_family');
         fontFamily = savedFontFamily ? savedFontFamily : 'serif';
     } catch (e) {
-        console.error("Error loading progress from safeStorage:", e);
+        console.error("Error loading progress from localStorage:", e);
         completedChapters = [];
         lastActiveChapter = 0;
         fontSizeLevel = 1.35;
@@ -796,7 +788,7 @@ function applySavedEbookStyles() {
 function markChapterCompleted(chapterIndex) {
     if (!completedChapters.includes(chapterIndex)) {
         completedChapters.push(chapterIndex);
-        safeStorage.setItem('completed_chapters', JSON.stringify(completedChapters));
+        localStorage.setItem('completed_chapters', JSON.stringify(completedChapters));
         renderDashboard();
     }
 }
@@ -909,7 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // THEME & NAVIGATION
 // ==========================================================================
 function initTheme() {
-    const storedTheme = safeStorage.getItem('tts_reader_theme') || 'dark';
+    const storedTheme = localStorage.getItem('tts_reader_theme') || 'dark';
     setTheme(storedTheme);
 }
 
@@ -927,13 +919,13 @@ function setTheme(theme) {
         document.body.classList.add('dark-theme');
         indicator.textContent = '🌙';
     }
-    safeStorage.setItem('tts_reader_theme', theme);
+    localStorage.setItem('tts_reader_theme', theme);
 }
 
 function setupEventListeners() {
     // 3-way Theme Cycle (Dark -> Light -> Sepia -> Dark)
     themeToggle.addEventListener('click', () => {
-        const currentTheme = safeStorage.getItem('tts_reader_theme') || 'dark';
+        const currentTheme = localStorage.getItem('tts_reader_theme') || 'dark';
         let nextTheme = 'dark';
         if (currentTheme === 'dark') {
             nextTheme = 'light';
@@ -952,13 +944,13 @@ function setupEventListeners() {
     fontDecrease.addEventListener('click', () => {
         fontSizeLevel = Math.max(1.0, fontSizeLevel - 0.1);
         readerContainerEl.style.fontSize = fontSizeLevel + 'rem';
-        safeStorage.setItem('reader_font_size', fontSizeLevel);
+        localStorage.setItem('reader_font_size', fontSizeLevel);
     });
 
     fontIncrease.addEventListener('click', () => {
         fontSizeLevel = Math.min(2.2, fontSizeLevel + 0.1);
         readerContainerEl.style.fontSize = fontSizeLevel + 'rem';
-        safeStorage.setItem('reader_font_size', fontSizeLevel);
+        localStorage.setItem('reader_font_size', fontSizeLevel);
     });
 
     // Font family switching
@@ -969,7 +961,7 @@ function setupEventListeners() {
         } else {
             readerContainerEl.classList.remove('sans-serif-font');
         }
-        safeStorage.setItem('reader_font_family', fontFamily);
+        localStorage.setItem('reader_font_family', fontFamily);
     });
 
     // Dashboard Start / Resume buttons
@@ -1071,7 +1063,7 @@ function loadChapter(chapterIndex) {
     
     currentChapterIndex = chapterIndex;
     lastActiveChapter = chapterIndex;
-    safeStorage.setItem('last_active_chapter', chapterIndex);
+    localStorage.setItem('last_active_chapter', chapterIndex);
     
     currentSentenceIndex = -1;
     sentencesList = [];
@@ -1136,10 +1128,16 @@ function loadChapter(chapterIndex) {
         }
     });
     
-    // Load audio file source from Cloudflare R2 (los mp3 no se sirven desde este dominio)
+    // Load local audio file source
     audioElement.src = 'https://pub-b479c6d5dd794530a6d617e092b04899.r2.dev/capital/audio/' + chapterAudios[chapterIndex];
     audioElement.load();
     audioElement.playbackRate = playbackRate;
+
+    sentenceTimeBoundaries = [];
+    audioElement.addEventListener('loadedmetadata', function onMeta() {
+        audioElement.removeEventListener('loadedmetadata', onMeta);
+        computeSentenceTimeBoundaries(audioElement.duration);
+    });
 
     updateProgressBar();
     
@@ -1172,8 +1170,35 @@ function updateProgressBar() {
     progressBarFill.style.width = `${percentage}%`;
 }
 
+function computeSentenceTimeBoundaries(duration) {
+    if (!duration || !sentencesList.length) {
+        sentenceTimeBoundaries = [];
+        return;
+    }
+    const weights = sentencesList.map(s => Math.max(s.length, 1));
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+    let cumulative = 0;
+    sentenceTimeBoundaries = weights.map(w => {
+        cumulative += w;
+        return (cumulative / totalWeight) * duration;
+    });
+}
+
+const SENTENCE_SYNC_LAG = 0.6; // segundos: compensa las pausas entre frases que no entran en la estimacion
+
+function updateSentenceSync() {
+    if (!sentenceTimeBoundaries.length) return;
+    const curTime = Math.max(audioElement.currentTime - SENTENCE_SYNC_LAG, 0);
+    let newIndex = sentenceTimeBoundaries.findIndex(boundary => curTime < boundary);
+    if (newIndex === -1) newIndex = sentenceTimeBoundaries.length - 1;
+    if (newIndex !== currentSentenceIndex) {
+        highlightSentenceDOM(newIndex);
+    }
+}
+
 function updateAudioProgress() {
     updateProgressBar();
+    updateSentenceSync();
 }
 
 function formatTime(seconds) {
