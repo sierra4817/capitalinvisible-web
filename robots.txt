@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /aviso-legal.html
+Disallow: /politica-privacidad.html
+Disallow: /politica-cookies.html
+Disallow: /politica-reembolso.html
+Disallow: /audiolibro-acceso.html
+Disallow: /app.html
+
+Sitemap: https://capitalinvisible.online/sitemap.xml
